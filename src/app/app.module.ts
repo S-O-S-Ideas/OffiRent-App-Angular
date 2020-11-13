@@ -20,6 +20,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import {StudentComponent} from './pages/student/student.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { ReservationComponent } from './pages/reservation/reservation.component';
+import { ReservationsComponent } from './pages/reservations/reservations.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     HomeComponent,
     AboutComponent,
     StudentComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ReservationComponent,
+    ReservationsComponent
   ],
   imports: [
     BrowserModule,

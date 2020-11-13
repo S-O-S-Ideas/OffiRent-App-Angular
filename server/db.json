@@ -60,5 +60,19 @@
       "address": "His Home",
       "id": 10
     }
+  ],
+  "reservations": [
+    {
+      "id": 1,
+      "status": false,
+      "initialDate": "20-10-01",
+      "endDate": "20-10-02"
+    },
+    {
+      "id": 2,
+      "status": true,
+      "initialDate": "20-11-10",
+      "endDate": "20-11-13"
+    }
   ]
 }
