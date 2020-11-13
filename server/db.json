@@ -60,5 +60,17 @@
       "address": "His Home",
       "id": 10
     }
-  ]
+  ],
+
+  "offices": [
+    {
+      "id": 100,
+      "address": "Lima",
+      "floor": 5,
+      "capacity": 5,
+      "description": "Grande, lujoso",
+      "price": 500,
+      "comment": "Alquilame!"
+    }
+  ],
 }
