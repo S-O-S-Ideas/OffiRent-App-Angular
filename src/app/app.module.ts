@@ -12,7 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,6 +20,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import {StudentComponent} from './pages/student/student.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { AccountComponent } from './pages/account/account.component';
+import { LoginFormComponent } from './pages/login-form/login-form.component';
+import { AccountsComponent } from './pages/accounts/accounts.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -29,7 +33,10 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     HomeComponent,
     AboutComponent,
     StudentComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AccountComponent,
+    LoginFormComponent,
+    AccountsComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +52,9 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     FormsModule,
     MatTableModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

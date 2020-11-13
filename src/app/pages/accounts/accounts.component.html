@@ -1,0 +1,38 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Profile</mat-card-title>
+    </mat-card-header>
+  <mat-card-content>
+    <mat-grid-list cols="2" rowHeight="100px">
+
+    </mat-grid-list>
+  </mat-card-content>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title"
+          id="modal-basic-title">
+        ¿Estas seguro de desactivar tu cuenta?
+      </h4>
+      <button type="button" class="close"
+              aria-label="Close" (click)=
+                "modal.dismiss('Cross click')">
+
+            <span aria-hidden="true">
+                ×
+            </span>
+      </button>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close('Not implementation yet')">
+        Acepto
+      </button>
+    </div>
+  </ng-template>
+  <mat-card-actions>
+    <a mat-raised-button color="primary" (click)="navigateToEditAccount()">Edit Profile</a>
+    <a mat-raised-button color="warn" (click)="open(content)">Deactivated Profile</a>
+  </mat-card-actions>
+</mat-card>

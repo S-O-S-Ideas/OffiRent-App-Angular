@@ -1,0 +1,73 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Edit Profile</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (submit)="onSubmit()" #accountForm="ngForm">
+      <p>
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="FirstName" name="firstName" required [(ngModel)]="accountData.firstName">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="LastName" name="lastName"  required [(ngModel)]="accountData.lastName">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <mat-label>E-mail</mat-label>
+          <input matInput placeholder="Email" name="email" required [(ngModel)]="accountData.email">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" name="password"  required [(ngModel)]="accountData.password">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <mat-label>Identification</mat-label>
+          <input matInput placeholder="Identification" name="identification" required [(ngModel)]="accountData.identification">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Phone Number</mat-label>
+          <input matInput placeholder="PhoneNumber" name="phoneNumber"  required [(ngModel)]="accountData.phoneNumber">
+        </mat-form-field>
+      </p>
+      <p>
+        <ng-container>
+             <button mat-raised-button  (click)="open(content)">Cambiar a Premium</button>
+        </ng-container>
+      </p>
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title"
+              id="modal-basic-title">
+            Será redireccionado a otra ventana para hacer el pago de la membresía premium.
+          </h4>
+          <button type="button" class="close"
+                  aria-label="Close" (click)=
+                    "modal.dismiss('Cross click')">
+
+            <span aria-hidden="true">
+                ×
+            </span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button"
+                  class="btn btn-outline-dark"
+                  (click)="modal.close('Save click')">
+            Acepto
+          </button>
+        </div>
+      </ng-template>
+       <p>
+        <ng-container>
+          <button mat-raised-button style="margin: 0" color="primary" (click)="onSubmit()">Guardar cambios</button>
+          <a mat-raised-button color="warn" style="margin-left: 50px" (click)="cancelEdit()">Cancelar</a>
+        </ng-container>
+      </p>
+    </form>
+  </mat-card-content>
+</mat-card>

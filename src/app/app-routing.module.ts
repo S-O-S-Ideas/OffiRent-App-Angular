@@ -5,14 +5,19 @@ import {HomeComponent} from './pages/home/home.component';
 import {AboutComponent} from './pages/about/about.component';
 import {StudentComponent} from './pages/student/student.component';
 import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
+import {AccountComponent} from './pages/account/account.component';
+import {AccountsComponent} from './pages/accounts/accounts.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'students', component: StudentsComponent },
   { path: 'students/new', component: StudentComponent },
+  { path: 'profile', component: AccountsComponent},
+  { path: 'profile/edit', component: AccountComponent},
   { path: 'students/:id', component: StudentComponent },
   { path: 'about', component: AboutComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
