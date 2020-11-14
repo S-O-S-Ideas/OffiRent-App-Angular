@@ -39,28 +39,14 @@ export class HttpDataService {
       .pipe(retry(2), catchError(this.handleError));
   }
   getProfile(): any{
-    return this.http.get('');
+    return this.http.get('https://offirent-open-source.herokuapp.com/swagger-ui/index.html?configUrl=/offirent-api-docs/swagger-config#/accounts/getAccountById/id?id=2');
   }
   // Get Student Data
   getList(): Observable<Student>{
     return this.http.get<Student>(this.basePath)
       .pipe(retry(2), catchError(this.handleError));
   }
-  //Update Account
-  updateAccount(): Observable<Account> {
-    const editAccount = {
-      firstName: 'Pablo',
-      lastName: 'de los Backyardigans',
-      email: 'pablito@hotmail.com',
-      password: 'pablito123',
-      identification: '72949108',
-      phoneNumber: 987654321,
-      isPremium: false,
-      picture: '',
-    };
-    return this.http.put<Account>(''/*<---link de la api desplegada*/, editAccount, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
-  }
+
   // Update Student
   updateItem(id, item): Observable<Student>{
     return this.http.put<Student>(`${this.basePath}/${id}`, JSON.stringify(item), this.httpOptions)
