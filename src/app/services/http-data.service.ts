@@ -9,8 +9,8 @@ import {Office} from '../models/office';
   providedIn: 'root'
 })
 export class HttpDataService {
-
-  basePath = '';
+  // Students Endpoint
+  basePath = 'https://offirent-develop.herokuapp.com/api/';
   constructor(private http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({
@@ -52,7 +52,11 @@ export class HttpDataService {
     return this.http.get<Office>(this.basePath)
       .pipe(retry(2), catchError(this.handleError));
   }
-
+  // Get Student Data
+  getListOffice(): Observable<Array<Office>>{
+    return this.http.get<Array<Office>>(`${this.basePath}/offices`)
+      .pipe(retry(2), catchError(this.handleError));
+  }
   updateProfile(): Observable<Account> {
     const editAccount = {
       firstName: 'Pablo',

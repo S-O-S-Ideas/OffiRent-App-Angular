@@ -3,9 +3,10 @@ export class Office {
   address: string;
   floor: number;
   capacity: number;
-  // score: number;
+  allowResource: boolean;
+  score: number;
   description: string;
   price: number;
+  status: boolean;
   comment: string;
-  // allowResource: false;
 }

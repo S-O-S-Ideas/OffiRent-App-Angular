@@ -18,6 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { OfficesSearchComponent } from './pages/offices-search/offices-search.component';
+import {MatSelectModule} from '@angular/material/select';
 
 import { OfficeComponent } from './pages/office/office.component';
 import { OfficesComponent } from './pages/offices/offices.component';
@@ -25,7 +29,6 @@ import { OfficesComponent } from './pages/offices/offices.component';
 import { AccountComponent } from './pages/account/account.component';
 import { LoginFormComponent } from './pages/login-form/login-form.component';
 import { AccountsComponent } from './pages/accounts/accounts.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -39,7 +42,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PageNotFoundComponent,
     AccountComponent,
     LoginFormComponent,
-    AccountsComponent
+    AccountsComponent,
+    OfficesSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatPaginatorModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    IvyCarouselModule,
+    NgbModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
