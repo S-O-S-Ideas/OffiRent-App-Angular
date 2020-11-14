@@ -20,8 +20,11 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import {StudentComponent} from './pages/student/student.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { OfficesSearchComponent } from './pages/offices-search/offices-search.component';
 
-
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     HomeComponent,
     AboutComponent,
     StudentComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    OfficesSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,9 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     FormsModule,
     MatTableModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    IvyCarouselModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

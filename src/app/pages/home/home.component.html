@@ -1,1 +1,48 @@
-<p>home works!</p>
+<carousel id="carousel" cellsToShow="1" height="300">
+  <div class="carousel-cell">
+    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg">
+  </div>
+  <div class="carousel-cell">
+    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg">
+  </div>
+</carousel>
+
+<div class="container">
+  <div class="row">
+    <h2>Oficinas más populares</h2>
+    <carousel id="popular-office" cellsToShow="4" height="300">
+      <div class="carousel-cell" *ngFor="let item of offices">
+        <mat-card>
+          <img mat-card-image src="assets/img/descarga.jpg">
+          <mat-card-title>{{item.name}}</mat-card-title>
+          <mat-card-content>
+            <h3>Puntuación: {{item.quantity}}</h3>
+            <p>
+              {{item.comment}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </carousel>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h2>Oficinas mejor calificadas</h2>
+    <carousel id="popular-office" cellsToShow="4" height="300">
+      <div class="carousel-cell" *ngFor="let item of offices">
+        <mat-card>
+          <img mat-card-image src="assets/img/descarga.jpg">
+          <mat-card-title>{{item.name}}</mat-card-title>
+          <mat-card-content>
+            <h3>Puntuación: {{item.quantity}}</h3>
+            <p>
+              {{item.comment}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </carousel>
+  </div>
+</div>

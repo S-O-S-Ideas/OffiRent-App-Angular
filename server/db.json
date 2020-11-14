@@ -60,5 +60,38 @@
       "address": "His Home",
       "id": 10
     }
-  ]
+  ],
+  "office":[
+    {
+      "id": 1,
+      "name": "Office",
+      "quantity": 4,
+      "comment": "Oficina con vista frente al mar"
+    },
+    {
+      "id": 2,
+      "name": "Office",
+      "quantity": 4,
+      "comment": "Oficina con vista frente al mar"
+    },
+    {
+      "id": 3,
+      "name": "Office",
+      "quantity": 4,
+      "comment": "Oficina con vista frente al mar"
+    },
+    {
+      "id": 4,
+      "name": "Office",
+      "quantity": 4,
+      "comment": "Oficina con vista frente al mar"
+    },
+    {
+      "id": 5,
+      "name": "Office",
+      "quantity": 4,
+      "comment": "Oficina con vista frente al mar"
+    }
+    ]
 }
+

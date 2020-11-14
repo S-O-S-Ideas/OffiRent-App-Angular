@@ -3,13 +3,14 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {Student} from '../models/student';
 import {catchError, retry} from 'rxjs/operators';
+import {Office} from '../models/office';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpDataService {
   // Students Endpoint
-  basePath = 'http://localhost:3000/api/students';
+  basePath = 'http://localhost:3000/office';
   constructor(private http: HttpClient) { }
   // Http Default Options
   httpOptions = {
@@ -38,8 +39,8 @@ export class HttpDataService {
       .pipe(retry(2), catchError(this.handleError));
   }
   // Get Student Data
-  getList(): Observable<Student>{
-    return this.http.get<Student>(this.basePath)
+  getListOffice(): Observable<Array<Office>>{
+    return this.http.get<Array<Office>>(this.basePath)
       .pipe(retry(2), catchError(this.handleError));
   }
   // Update Student

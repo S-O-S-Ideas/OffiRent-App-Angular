@@ -43,7 +43,7 @@ export class StudentsComponent implements OnInit, AfterViewInit {
     }
   }
   getAllStudents(): void {
-    this.httpDataService.getList().subscribe((response: any) => {
+    this.httpDataService.getListOffice().subscribe((response: any) => {
       this.dataSource.data = response;
     });
   }
