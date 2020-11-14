@@ -1,31 +1,25 @@
-<div>
-  <div class="container" id="filter">
-    <div class="col row">
-      <div ngbDropdown class="d-inline-block">
-        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem>Action - 1</button>
-          <button ngbDropdownItem>Another Action</button>
-          <button ngbDropdownItem>Something else is here</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4" *ngFor="let item of offices">
-        <mat-card>
-          <img mat-card-image src="assets/img/descarga.jpg">
-          <mat-card-title>{{item.name}}</mat-card-title>
-          <mat-card-content>
-            <h3>Puntuación: {{item.quantity}}</h3>
-            <p>
-              {{item.comment}}
-            </p>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div>
-
-  </div>
-</div>
+ <div>
+   <div class="container">
+     <div class="row">
+       <mat-form-field class="example-full-width">
+         <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+       </mat-form-field>
+     </div>
+   </div>
+   <div class="container">
+     <div class="row">
+       <div class="col-lg-3" *ngFor="let item of this.dataSource.filteredData">
+         <mat-card>
+           <img mat-card-image src="assets/img/descarga.jpg">
+           <mat-card-title>{{item.name}}</mat-card-title>
+           <mat-card-content>
+             <h3>Puntuación: {{item.quantity}}</h3>
+             <p>
+               {{item.comment}}
+             </p>
+           </mat-card-content>
+         </mat-card>
+       </div>
+     </div>
+   </div>
+ </div>

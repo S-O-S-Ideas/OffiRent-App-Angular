@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Office} from '../../models/office';
 import {HttpDataService} from '../../services/http-data.service';
 import { Router, ActivatedRoute} from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-offices-search',
@@ -11,11 +12,19 @@ import { Router, ActivatedRoute} from '@angular/router';
 export class OfficesSearchComponent implements OnInit {
 
   constructor(private httpDataService: HttpDataService, private router: Router, private route: ActivatedRoute) { }
-  offices: Array<Office>;
+/*  offices: Array<Office>;*/
+  dataSource = new MatTableDataSource( );
   ngOnInit(): void {
     this.httpDataService.getListOffice()
       .subscribe((response) => {
-        this.offices = response;
+        this.dataSource.data = response;
       });
+  }
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }
