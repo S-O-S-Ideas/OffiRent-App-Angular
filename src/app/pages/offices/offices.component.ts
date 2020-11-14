@@ -43,7 +43,7 @@ export class OfficesComponent implements OnInit, AfterViewInit {
     }
   }
   getAllOffices(): void {
-    this.httpDataService.getList().subscribe((response: any) => {
+    this.httpDataService.getListOffice().subscribe((response: any) => {
       this.dataSource.data = response;
     });
   }

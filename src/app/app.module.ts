@@ -21,7 +21,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OfficesSearchComponent } from './pages/offices-search/offices-search.component';
-import {MatSelectModule} from "@angular/material/select";
+import {MatSelectModule} from '@angular/material/select';
 
 import { OfficeComponent } from './pages/office/office.component';
 import { OfficesComponent } from './pages/offices/offices.component';
