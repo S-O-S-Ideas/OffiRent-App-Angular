@@ -8,6 +8,6 @@ export class Account{
   email: string;
   password: string;
   identification: string;
-  phoneNumber: number;
+  phone: number;
   // reservation: Reservation;
 }

@@ -8,6 +8,7 @@ import { HttpDataService } from '../../services/http-data.service';
 import * as _ from 'lodash';
 import {Router} from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import {Office} from "../../models/office";
 
 @Component({
   selector: 'app-accounts',
@@ -65,12 +66,21 @@ export class AccountsComponent implements OnInit, AfterViewInit {
       identification: ['', Validators.required],
       phoneNumber: ['', Validators.required, Validators.minLength(9)]
     });
+    this.retrieveAccount(2);
     this.httpDataService.getProfile().subscribe(data => this.accounts = data);
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
-
+  retrieveAccount(id): void {
+    this.httpDataService.getAccount(id)
+      .subscribe((Response) => {
+        this.accountData = {} as Account;
+        this.accountData = _.cloneDeep(Response);
+        console.log(Response);
+        console.log(this.accountData);
+      });
+  }
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
