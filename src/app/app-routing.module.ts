@@ -5,6 +5,7 @@ import {HomeComponent} from './pages/home/home.component';
 import {AboutComponent} from './pages/about/about.component';
 import {StudentComponent} from './pages/student/student.component';
 import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
+import {DetailOfficeComponent} from './pages/detail-office/detail-office.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'students/new', component: StudentComponent },
   { path: 'students/:id', component: StudentComponent },
   { path: 'about', component: AboutComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent },
+  { path: 'workplaces', component: DetailOfficeComponent}
 ];
 
 @NgModule({

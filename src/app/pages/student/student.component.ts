@@ -21,7 +21,7 @@ export class StudentComponent implements OnInit {
 
   ngOnInit(): void {
     this.studentId = Number(this.route.params.subscribe( params => {
-      if (params.id) {
+      if (params.id) {  // si entre los parametros hay id, lo modifica, sino entonces lo esta creando
         const id = params.id;
         console.log(id);
         this.retrieveStudent(id);

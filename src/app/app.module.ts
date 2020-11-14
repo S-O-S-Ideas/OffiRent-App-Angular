@@ -20,6 +20,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import {StudentComponent} from './pages/student/student.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { DetailOfficeComponent } from './pages/detail-office/detail-office.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     HomeComponent,
     AboutComponent,
     StudentComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DetailOfficeComponent
   ],
   imports: [
     BrowserModule,
