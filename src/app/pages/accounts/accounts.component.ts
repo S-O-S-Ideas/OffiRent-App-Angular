@@ -25,6 +25,7 @@ export class AccountsComponent implements OnInit, AfterViewInit {
    }
   @ViewChild('accountForm', { static: false })
   accountForm: NgForm;
+  submitted = false;
   registerForm: FormGroup;
   accountData: Account;
   accounts: Array<any>;
@@ -77,7 +78,9 @@ export class AccountsComponent implements OnInit, AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
+   get f(){
+    return this.registerForm.controls;
+   }
   editItem(element): void {
     console.log(element);
     this.accountData = _.cloneDeep(element);
@@ -107,16 +110,16 @@ export class AccountsComponent implements OnInit, AfterViewInit {
         this.cancelEdit();
       });
   }
-  onSubmit(): void {
-    if (this.accountForm.form.valid) {
-      if (this.isEditMode) {
-        this.updateAccount();
-      } else {
-        this.cancelEdit();
-      }
-    } else {
-      console.log('Invalid Data');
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.registerForm.invalid) {
+      return;
     }
+
+    console.log('email=' + this.f.email.value);
+    console.log('username=' + this.f.firstName.value);
+    console.log('password=' + this.f.password.value);
   }
   navigateToEditAccount(): void {
     this.router.navigate([`/profile/edit`]).then(() => null);

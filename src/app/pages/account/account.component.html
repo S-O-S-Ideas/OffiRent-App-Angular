@@ -27,6 +27,7 @@
       <input type="text" class="form-control" formControlName="email" required [ngClass]="{'is-invalid': submitted && f.email.errors}" />
       <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
         <div *ngIf="f.email.errors.required">>> required</div>
+        <div *ngIf="f.email.errors.email">>> Debe ser un e-mail valido</div>
       </div>
       </div>
       <p> </p>
@@ -36,13 +37,14 @@
         <input type="text" class="form-control" formControlName="password" required [ngClass]="{'is-invalid': submitted && f.password.errors}" />
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
           <div *ngIf="f.password.errors.required">>> required</div>
+          <div *ngIf="f.password.errors.minlength">>> Debe tener como minimo 6 caracteres</div>
         </div>
       </div>
       <p> </p>
       <p> </p>
       <div class="form-group">
         <label>DNI</label>
-        <input type="text" class="form-control" formControlName="email" required [ngClass]="{'is-invalid': submitted && f.identification.errors}" />
+        <input type="text" class="form-control" formControlName="identification" required [ngClass]="{'is-invalid': submitted && f.identification.errors}" />
         <div *ngIf="submitted && f.identification.errors" class="invalid-feedback">
           <div *ngIf="f.identification.errors.required">>> required</div>
         </div>
@@ -54,6 +56,7 @@
         <input type="text" class="form-control" formControlName="phoneNumber" required [ngClass]="{'is-invalid': submitted && f.phoneNumber.errors}" />
         <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
           <div *ngIf="f.phoneNumber.errors.required">>> required</div>
+          <div *ngIf="f.password.errors.minlength">>> El numero de telefono debe tener 9 caracteres</div>
         </div>
       </div>
       <p> </p>

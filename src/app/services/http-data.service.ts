@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {Account} from '../models/account';
 import {catchError, retry} from 'rxjs/operators';
+import {Office} from '../models/office';
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +46,11 @@ export class HttpDataService {
   }
 
   getProfile(): any{
-    return this.http.get('https://offirent-develop.herokuapp.com/swagger-ui/index.html?configUrl=/offirent-api-docs/swagger-config');
+    return this.http.get('https://offirent-develop.herokuapp.com/api/accounts/');
+  }
+  getList(): Observable<Office>{
+    return this.http.get<Office>(this.basePath)
+      .pipe(retry(2), catchError(this.handleError));
   }
 
   updateProfile(): Observable<Account> {
@@ -57,7 +62,8 @@ export class HttpDataService {
       identification: '72949109',
       phoneNumber: 987654321
     };
-    return this.http.put<Account> ('https://homemadeapi.azurewebsites.net/api/userchef/id?id=100', editAccount, this.httpOptions)
+    // tslint:disable-next-line:max-line-length
+    return this.http.put<Account> ('https://offirent-develop.herokuapp.com/api/accounts/accountid?accountId=2', editAccount, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
