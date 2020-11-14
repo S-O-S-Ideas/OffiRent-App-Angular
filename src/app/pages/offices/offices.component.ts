@@ -9,7 +9,7 @@ import * as _ from 'lodash';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-students',
+  selector: 'app-offices',
   templateUrl: './offices.component.html',
   styleUrls: ['./offices.component.css']
 })
