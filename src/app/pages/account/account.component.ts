@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {Account} from '../../models/account';
 import {HttpDataService} from '../../services/http-data.service';
 import { Router, ActivatedRoute} from '@angular/router';
@@ -13,25 +13,19 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AccountComponent implements OnInit {
   @ViewChild('accountForm', { static: false })
+  registerForm: FormGroup;
+  submitted = false;
+  accounts: Array<any>;
   accountForm: NgForm;
-  isEditMode = false;
-  accountId: number;
   closeResult = '';
   accountData: Account = new Account();
-  defaultAccount = {
-    id: 0,
-    firstName: '',
-    lastName: '',
-    isPremium: false,
-    email: '',
-    password: '',
-    identification: '',
-    phoneNumber: null};
+
   constructor(
     private httpDataService: HttpDataService,
     private router: Router,
     private route: ActivatedRoute,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal,
+    private formBuilder: FormBuilder) { }
   private static getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -52,56 +46,40 @@ export class AccountComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.accountId = Number(this.route.params.subscribe( params => {
-      if (params.id) {
-        const id = params.id;
-        console.log(id);
-        this.retrieveAccount(id);
-        this.isEditMode = true;
-        return id;
-      } else {
-        this.resetAccount();
-        this.isEditMode = false;
-        return 0;
-      }
-    }));
+    this.registerForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required, Validators.email],
+      password: ['', Validators.required, Validators.minLength(6)],
+      identification: ['', Validators.required],
+      phoneNumber: ['', Validators.required, Validators.minLength(9)],
+    });
+    this.httpDataService.getProfile().subscribe(data => this.accounts = data);
   }
   navigateToAccount(): void {
     this.router.navigate(['/profile']);
   }
 
-  resetAccount(): void {
-    this.accountData = this.defaultAccount;
-  }
-  retrieveAccount(id): void {
-    this.httpDataService.getItem(id)
-      .subscribe(() => {
-        this.accountData = {} as Account;
-        this.accountData = _.cloneDeep(Response);
-        console.log(Response);
-        console.log(this.accountData);
-      });
-  }
   cancelEdit(): void {
     this.navigateToAccount();
   }
-
-  updateAccount(): void {
-    this.httpDataService.updateItem(this.accountData.id, this.accountData as Account);
-    this.navigateToAccount();
+  onUpdateProfile(): void{
+    this.httpDataService.updateProfile();
+  }
+  get f() {
+    return this.registerForm.controls;
   }
 
-
-  onSubmit(): void {
-    if (this.accountForm.form.valid) {
-      console.log(this.accountData);
-      if (this.isEditMode) {
-        this.updateAccount();
-      } else {
-        this.cancelEdit();
-      }
-    } else {
-      console.log('Invalid Data');
+  onSubmit() {
+    this.submitted = true;
+    if (this.registerForm.invalid){
+      return;
     }
+    console.log('firstName=' + this.f.firstName.value);
+    console.log('lastName=' + this.f.lastName.value);
+    console.log('identification=' + this.f.identification.value);
+    console.log('phoneNumber=' + this.f.phoneNumber.value);
+    console.log('email=' + this.f.email.value);
+    console.log('password=' + this.f.password.value);
   }
 }

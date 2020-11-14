@@ -3,37 +3,61 @@
     <mat-card-title>Editar Perfil</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form (submit)="onSubmit()" #accountForm="ngForm">
-      <p>
-        <mat-form-field>
-          <mat-label>Nombre</mat-label>
-          <input matInput placeholder="Nombre" name="firstName" required [(ngModel)]="accountData.firstName">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Apellidos</mat-label>
-          <input matInput placeholder="Apellidos" name="lastName"  required [(ngModel)]="accountData.lastName">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field>
-          <mat-label>E-mail</mat-label>
-          <input matInput placeholder="E-mail" name="email" required [(ngModel)]="accountData.email">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Contraseña</mat-label>
-          <input matInput placeholder="Contraseña" name="password"  required [(ngModel)]="accountData.password">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field>
-          <mat-label>DNI</mat-label>
-          <input matInput placeholder="DNI" name="identification" required [(ngModel)]="accountData.identification">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Telefono</mat-label>
-          <input matInput placeholder="Telefono" name="phoneNumber"  required [(ngModel)]="accountData.phoneNumber">
-        </mat-form-field>
-      </p>
+    <form [formGroup]="registerForm" (submit)="onSubmit()" >
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" class="form-control" formControlName="firstName" [ngClass]="{'is-invalid': submitted && f.firstName.errors}" />
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+          <div *ngIf="f.firstName.errors.required">>> required</div>
+        </div>
+      </div>
+      <p> </p>
+      <p> </p>
+      <div class="form-group">
+        <label>Apellidos</label>
+        <input type="text" class="form-control" formControlName="lastName" [ngClass]="{'is-invalid': submitted && f.lastName.errors}" />
+        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+          <div *ngIf="f.lastName.errors.required">>> required</div>
+        </div>
+      </div>
+      <p> </p>
+      <p> </p>
+      <div class="form-group">
+      <label>E-mail</label>
+      <input type="text" class="form-control" formControlName="email" [ngClass]="{'is-invalid': submitted && f.email.errors}" />
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">>> required</div>
+      </div>
+      </div>
+      <p> </p>
+      <p> </p>
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="text" class="form-control" formControlName="password" [ngClass]="{'is-invalid': submitted && f.password.errors}" />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">>> required</div>
+        </div>
+      </div>
+      <p> </p>
+      <p> </p>
+      <div class="form-group">
+        <label>DNI</label>
+        <input type="text" class="form-control" formControlName="email" [ngClass]="{'is-invalid': submitted && f.identification.errors}" />
+        <div *ngIf="submitted && f.identification.errors" class="invalid-feedback">
+          <div *ngIf="f.identification.errors.required">>> required</div>
+        </div>
+      </div>
+      <p> </p>
+      <p> </p>
+      <div class="form-group">
+        <label>Telefono</label>
+        <input type="text" class="form-control" formControlName="phoneNumber" [ngClass]="{'is-invalid': submitted && f.phoneNumber.errors}" />
+        <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+          <div *ngIf="f.phoneNumber.errors.required">>> required</div>
+        </div>
+      </div>
+      <p> </p>
+      <p> </p>
       <p>
         <ng-container>
              <button mat-raised-button  (click)="open(content)">Cambiar a Premium</button>
@@ -64,7 +88,7 @@
       </ng-template>
        <p>
         <ng-container>
-          <button mat-raised-button style="margin: 0" color="primary" (click)="onSubmit()">Guardar cambios</button>
+          <button mat-raised-button style="margin: 0" color="primary" (click)="onUpdateProfile()">Guardar cambios</button>
           <a mat-raised-button color="warn" style="margin-left: 50px" (click)="cancelEdit()">Cancelar</a>
         </ng-container>
       </p>

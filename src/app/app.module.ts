@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StudentsComponent } from './pages/students/students.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,7 +17,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
-import {StudentComponent} from './pages/student/student.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { AccountComponent } from './pages/account/account.component';
 import { LoginFormComponent } from './pages/login-form/login-form.component';
@@ -29,10 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
-    StudentsComponent,
     HomeComponent,
     AboutComponent,
-    StudentComponent,
     PageNotFoundComponent,
     AccountComponent,
     LoginFormComponent,
