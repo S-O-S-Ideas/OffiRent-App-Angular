@@ -1,38 +1,55 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Profile</mat-card-title>
-    </mat-card-header>
-  <mat-card-content>
-    <mat-grid-list cols="2" rowHeight="100px">
-
-    </mat-grid-list>
-  </mat-card-content>
-  <ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title"
-          id="modal-basic-title">
-        ¿Estas seguro de desactivar tu cuenta?
-      </h4>
-      <button type="button" class="close"
-              aria-label="Close" (click)=
-                "modal.dismiss('Cross click')">
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title"
+        id="modal-basic-title">
+      ¿Estas seguro de desactivar tu cuenta?
+    </h4>
+    <button type="button" class="close"
+            aria-label="Close" (click)=
+              "modal.dismiss('Cross click')">
 
             <span aria-hidden="true">
                 ×
             </span>
-      </button>
-    </div>
+    </button>
+  </div>
 
-    <div class="modal-footer">
-      <button type="button"
-              class="btn btn-outline-dark"
-              (click)="modal.close('Not implementation yet')">
-        Acepto
-      </button>
-    </div>
-  </ng-template>
-  <mat-card-actions>
-    <a mat-raised-button color="primary" (click)="navigateToEditAccount()">Edit Profile</a>
-    <a mat-raised-button color="warn" (click)="open(content)">Deactivated Profile</a>
-  </mat-card-actions>
-</mat-card>
+  <div class="modal-footer">
+    <button type="button"
+            class="btn btn-outline-dark"
+            (click)="modal.close('Not implementation yet')">
+      Acepto
+    </button>
+  </div>
+</ng-template>
+
+
+<mat-grid-list cols="2">
+        <mat-grid-tile>
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title *ngFor="let profile of accounts">{{ profile.firstName + ' ' + profile.lastname }}</mat-card-title>
+            <mat-card-subtitle>OffiUser</mat-card-subtitle>
+            <mat-card-content>
+              <h2 *ngFor="let profile of accounts">{{ 'Email: ' + profile.email}}</h2>
+              <p> </p>
+              <p> </p>
+              <h2 *ngFor="let profile of accounts">{{ 'Identification: ' + profile.identification}}</h2>
+              <p> </p>
+              <p> </p>
+              <h2 *ngFor="let profile of accounts">{{ 'Identification: ' + profile.phoneNumber}}</h2>
+              <p> </p>
+              <p> </p>
+            </mat-card-content>
+          </mat-card-header>
+          <img mat-card-image src="https://st2.depositphotos.com/2309453/8796/i/950/depositphotos_87969200-stock-photo-manager-sitting-at-desk-and.jpg">
+          <mat-card-actions>
+            <a mat-raised-button color="primary" style="margin-left: 100px" (click)="navigateToEditAccount()">Editar Perfil</a>
+            <a mat-raised-button color="warn" style="margin-left: 200px" (click)="open(content)">Desactivar Perfil</a>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+</mat-grid-list>
+
+
+

@@ -1,37 +1,37 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Edit Profile</mat-card-title>
+    <mat-card-title>Editar Perfil</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <form (submit)="onSubmit()" #accountForm="ngForm">
       <p>
         <mat-form-field>
-          <mat-label>First Name</mat-label>
-          <input matInput placeholder="FirstName" name="firstName" required [(ngModel)]="accountData.firstName">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Nombre" name="firstName" required [(ngModel)]="accountData.firstName">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Last Name</mat-label>
-          <input matInput placeholder="LastName" name="lastName"  required [(ngModel)]="accountData.lastName">
+          <mat-label>Apellidos</mat-label>
+          <input matInput placeholder="Apellidos" name="lastName"  required [(ngModel)]="accountData.lastName">
         </mat-form-field>
       </p>
       <p>
         <mat-form-field>
           <mat-label>E-mail</mat-label>
-          <input matInput placeholder="Email" name="email" required [(ngModel)]="accountData.email">
+          <input matInput placeholder="E-mail" name="email" required [(ngModel)]="accountData.email">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Password</mat-label>
-          <input matInput placeholder="Password" name="password"  required [(ngModel)]="accountData.password">
+          <mat-label>Contraseña</mat-label>
+          <input matInput placeholder="Contraseña" name="password"  required [(ngModel)]="accountData.password">
         </mat-form-field>
       </p>
       <p>
         <mat-form-field>
-          <mat-label>Identification</mat-label>
-          <input matInput placeholder="Identification" name="identification" required [(ngModel)]="accountData.identification">
+          <mat-label>DNI</mat-label>
+          <input matInput placeholder="DNI" name="identification" required [(ngModel)]="accountData.identification">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Phone Number</mat-label>
-          <input matInput placeholder="PhoneNumber" name="phoneNumber"  required [(ngModel)]="accountData.phoneNumber">
+          <mat-label>Telefono</mat-label>
+          <input matInput placeholder="Telefono" name="phoneNumber"  required [(ngModel)]="accountData.phoneNumber">
         </mat-form-field>
       </p>
       <p>

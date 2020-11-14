@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import { Account } from '../../models/account';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -19,12 +19,16 @@ export class AccountsComponent implements OnInit, AfterViewInit {
   constructor(
     private httpDataService: HttpDataService,
     private router: Router,
-    private modalService: NgbModal) {
+    private modalService: NgbModal,
+    private formBuilder: FormBuilder) {
     this.accountData = {} as Account;
    }
   @ViewChild('accountForm', { static: false })
   accountForm: NgForm;
+  registerForm: FormGroup;
   accountData: Account;
+  item: any;
+  accounts: Array<any>;
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'password', 'identification', 'phoneNumber', 'isPremium'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -53,7 +57,15 @@ export class AccountsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.dataSource.sort = this.sort;
+    this.registerForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required, Validators.email],
+      password: ['', Validators.required, Validators.minLength(6)],
+      identification: ['', Validators.required],
+      phoneNumber: ['', Validators.required, Validators.minLength(9)]
+    });
+    this.httpDataService.getProfile().subscribe(data => this.accounts = data);
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;

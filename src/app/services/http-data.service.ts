@@ -3,13 +3,14 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {Student} from '../models/student';
 import {catchError, retry} from 'rxjs/operators';
+import { Account } from '../models/account';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpDataService {
   // Students Endpoint
-  basePath = 'http://localhost:3000/api/students';
+  basePath = 'http://localhost:3000/api/profile';
   constructor(private http: HttpClient) { }
   // Http Default Options
   httpOptions = {
@@ -37,9 +38,27 @@ export class HttpDataService {
     return this.http.get<Student>(`${this.basePath}/${id}`, this.httpOptions )
       .pipe(retry(2), catchError(this.handleError));
   }
+  getProfile(): any{
+    return this.http.get('');
+  }
   // Get Student Data
   getList(): Observable<Student>{
     return this.http.get<Student>(this.basePath)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  //Update Account
+  updateAccount(): Observable<Account> {
+    const editAccount = {
+      firstName: 'Pablo',
+      lastName: 'de los Backyardigans',
+      email: 'pablito@hotmail.com',
+      password: 'pablito123',
+      identification: '72949108',
+      phoneNumber: 987654321,
+      isPremium: false,
+      picture: '',
+    };
+    return this.http.put<Account>(''/*<---link de la api desplegada*/, editAccount, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
   // Update Student

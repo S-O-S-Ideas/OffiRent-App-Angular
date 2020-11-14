@@ -1,0 +1,15 @@
+.example-card {
+  width: 800px;
+}
+
+.fill{
+  left: 600px;
+  top: 10px;
+}
+
+.example-container {
+  width: 1000px;
+  height: 1000px;
+  margin: 10px;
+  border: 1px solid #555;
+}
