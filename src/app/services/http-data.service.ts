@@ -57,7 +57,7 @@ export class HttpDataService {
     return this.http.get<Array<Office>>(`${this.basePath}/offices`)
       .pipe(retry(2), catchError(this.handleError));
   }
-  updateProfile(): Observable<Account> {
+  updateProfile(id, item): Observable<Account> {
     const editAccount = {
       firstName: 'Pablo',
       lastName: 'de los Backyardigans',
@@ -67,7 +67,7 @@ export class HttpDataService {
       phoneNumber: 987654321
     };
     // tslint:disable-next-line:max-line-length
-    return this.http.put<Account> ('https://offirent-develop.herokuapp.com/api/accounts/accountid?accountId=2', editAccount, this.httpOptions)
+    return this.http.put<Account> (`${this.basePath}/accounts/${id}`, JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 

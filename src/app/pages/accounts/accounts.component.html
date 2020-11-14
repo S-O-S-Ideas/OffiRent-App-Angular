@@ -24,11 +24,11 @@
 </ng-template>
 
 
-<mat-grid-list cols="2">
+<mat-grid-list cols="2" *ngFor="let profile of accounts">
         <mat-grid-tile>
         <mat-card class="example-card">
           <mat-card-header>
-            <mat-card-title *ngFor="let profile of accounts">{{ profile.firstName + ' '+ profile.lastName}}</mat-card-title>
+            <mat-card-title >{{ profile.firstName + ' '+ profile.lastName}}</mat-card-title>
             <mat-card-subtitle>OffiProvider</mat-card-subtitle>
           </mat-card-header>
           <img mat-card-image src="https://st2.depositphotos.com/2309453/8796/i/950/depositphotos_87969200-stock-photo-manager-sitting-at-desk-and.jpg">
@@ -45,13 +45,13 @@
         <div class="col-md-6">
           <mat-card-content>
             <h1 style="margin-left: 20px">Datos Personales: </h1>
-            <h2 *ngFor="let profile of accounts">{{ 'E-mail: ' + profile.email}}</h2>
+            <h2>{{ 'E-mail: ' + profile.email}}</h2>
             <p> </p>
             <p> </p>
-            <h2 *ngFor="let profile of accounts">{{ 'DNI: ' + profile.identification}}</h2>
+            <h2>{{ 'DNI: ' + profile.identification}}</h2>
             <p> </p>
             <p> </p>
-            <h2 *ngFor="let profile of accounts">{{ 'Telefono: ' + profile.phone}}</h2>
+            <h2>{{ 'Telefono: ' + profile.phone}}</h2>
             <p> </p>
             <p> </p>
           </mat-card-content>

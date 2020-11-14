@@ -16,7 +16,9 @@ export class OfficeComponent implements OnInit {
   isEditMode = false;
   officeId: number;
   officeData: Office = new Office();
-  defaultOffice = { id: 0, address: '', floor: null, capacity: null, description: '', price: null, comment: ''};
+  defaultOffice = {
+    id: 0, address: '', floor: null, capacity: null, allowResource: true, score: 0, description: '',
+    price: null, status: true, comment: ''};
   constructor(private httpDataService: HttpDataService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
