@@ -1,16 +1,15 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {Student} from '../models/student';
 import {catchError, retry} from 'rxjs/operators';
-import { Account } from '../models/account';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpDataService {
   // Students Endpoint
-  basePath = 'http://localhost:3000/api/profile';
+  basePath = ''; // localhost
   constructor(private http: HttpClient) { }
   // Http Default Options
   httpOptions = {
@@ -39,7 +38,7 @@ export class HttpDataService {
       .pipe(retry(2), catchError(this.handleError));
   }
   getProfile(): any{
-    return this.http.get('https://offirent-open-source.herokuapp.com/swagger-ui/index.html?configUrl=/offirent-api-docs/swagger-config#/accounts/getAccountById/id?id=2');
+    return this.http.get(''/*<---localhost:*/);
   }
   // Get Student Data
   getList(): Observable<Student>{

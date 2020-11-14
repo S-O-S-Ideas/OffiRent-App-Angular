@@ -27,7 +27,6 @@ export class AccountsComponent implements OnInit, AfterViewInit {
   accountForm: NgForm;
   registerForm: FormGroup;
   accountData: Account;
-  item: any;
   accounts: Array<any>;
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'password', 'identification', 'phoneNumber', 'isPremium'];
