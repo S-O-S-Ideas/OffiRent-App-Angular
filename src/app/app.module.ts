@@ -23,6 +23,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OfficesSearchComponent } from './pages/offices-search/offices-search.component';
+import {MatSelectModule} from "@angular/material/select";
 
 // @ts-ignore
 @NgModule({
@@ -51,7 +52,8 @@ import { OfficesSearchComponent } from './pages/offices-search/offices-search.co
     MatPaginatorModule,
     HttpClientModule,
     IvyCarouselModule,
-    NgbModule
+    NgbModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

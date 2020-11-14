@@ -1,24 +1,31 @@
-<carousel id="carousel" cellsToShow="1" height="300">
-  <div class="carousel-cell">
-    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg">
+<carousel id="carousel" cellsToShow="1" height="500" cellWidth="1000" dots="true" autoplay="true"
+          autoplayInterval="5000">
+  <div class="carousel-cell slider">
+    <img  src="https://estaticos.elperiodico.com/resources/jpg/3/6/1548354212463.jpg">
   </div>
-  <div class="carousel-cell">
-    <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg">
+  <div class="carousel-cell slider">
+    <img src="https://assets.entrepreneur.com/content/3x2/2000/20190304001639-oficinas.jpeg">
+  </div>
+  <div class="carousel-cell slider">
+    <img src="https://contractworkplaces.com/web/wp-content/uploads/2018/10/Oficinas-Mercado-Libre-LlanoFotografia-7474.jpg">
+  </div><div class="carousel-cell slider">
+    <img src="https://cdn.vuetifyjs.com/images/carousel/planet.jpg">
   </div>
 </carousel>
 
 <div class="container">
   <div class="row">
     <h2>Oficinas más populares</h2>
-    <carousel id="popular-office" cellsToShow="4" height="300">
+    <carousel id="popular-office" cellsToShow="4" height="300" loop="true">
       <div class="carousel-cell" *ngFor="let item of offices">
         <mat-card>
           <img mat-card-image src="assets/img/descarga.jpg">
-          <mat-card-title>{{item.name}}</mat-card-title>
+          <mat-card-title>{{item.address}}</mat-card-title>
           <mat-card-content>
-            <h3>Puntuación: {{item.quantity}}</h3>
+            <h3>Puntuación: {{item.score}}</h3>
+            <h3>Precio: {{item.price}}</h3>
             <p>
-              {{item.comment}}
+              {{item.description}}
             </p>
           </mat-card-content>
         </mat-card>
@@ -30,15 +37,15 @@
 <div class="container">
   <div class="row">
     <h2>Oficinas mejor calificadas</h2>
-    <carousel id="popular-office" cellsToShow="4" height="300">
+    <carousel id="best-office" cellsToShow="4" height="300" loop="true">
       <div class="carousel-cell" *ngFor="let item of offices">
         <mat-card>
           <img mat-card-image src="assets/img/descarga.jpg">
-          <mat-card-title>{{item.name}}</mat-card-title>
+          <mat-card-title>{{item.address}}</mat-card-title>
           <mat-card-content>
-            <h3>Puntuación: {{item.quantity}}</h3>
+            <h3>Puntuación: {{item.score}}</h3>
             <p>
-              {{item.comment}}
+              {{item.description}}
             </p>
           </mat-card-content>
         </mat-card>

@@ -10,7 +10,7 @@ import {Office} from '../models/office';
 })
 export class HttpDataService {
   // Students Endpoint
-  basePath = 'http://localhost:3000/office';
+  basePath = 'https://offirent-develop.herokuapp.com/api/';
   constructor(private http: HttpClient) { }
   // Http Default Options
   httpOptions = {
@@ -40,7 +40,7 @@ export class HttpDataService {
   }
   // Get Student Data
   getListOffice(): Observable<Array<Office>>{
-    return this.http.get<Array<Office>>(this.basePath)
+    return this.http.get<Array<Office>>(`${this.basePath}/offices`)
       .pipe(retry(2), catchError(this.handleError));
   }
   // Update Student

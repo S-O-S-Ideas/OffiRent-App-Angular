@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'students', component: StudentsComponent },
   { path: 'students/new', component: StudentComponent },
   { path: 'students/:id', component: StudentComponent },
-  { path: 'offices-search', component: OfficesSearchComponent},
+  { path: 'workplaces', component: OfficesSearchComponent},
   { path: 'about', component: AboutComponent },
   { path: '**', component: PageNotFoundComponent },
 

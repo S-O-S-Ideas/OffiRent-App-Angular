@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
    this.httpDataService.getListOffice()
       .subscribe((response) => {
         this.offices = response;
+        console.log(response);
       });
   }
 
