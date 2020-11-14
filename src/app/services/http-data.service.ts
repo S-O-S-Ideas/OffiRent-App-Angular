@@ -3,13 +3,14 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {Account} from '../models/account';
 import {catchError, retry} from 'rxjs/operators';
+import {Office} from '../models/office';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpDataService {
-
-  basePath = '';
+  // Students Endpoint
+  basePath = 'https://offirent-develop.herokuapp.com/api/';
   constructor(private http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({
@@ -47,7 +48,11 @@ export class HttpDataService {
   getProfile(): any{
     return this.http.get('https://offirent-develop.herokuapp.com/swagger-ui/index.html?configUrl=/offirent-api-docs/swagger-config');
   }
-
+  // Get Student Data
+  getListOffice(): Observable<Array<Office>>{
+    return this.http.get<Array<Office>>(`${this.basePath}/offices`)
+      .pipe(retry(2), catchError(this.handleError));
+  }
   updateProfile(): Observable<Account> {
     const editAccount = {
       firstName: 'Pablo',

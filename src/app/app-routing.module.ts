@@ -18,6 +18,10 @@ const routes: Routes = [
   { path: 'profile/edit', component: AccountComponent},
   { path: 'about', component: AboutComponent },
   { path: '**', component: PageNotFoundComponent },
+  { path: 'workplaces', component: OfficesSearchComponent},
+  { path: 'about', component: AboutComponent },
+  { path: '**', component: PageNotFoundComponent },
+
 ];
 
 @NgModule({
