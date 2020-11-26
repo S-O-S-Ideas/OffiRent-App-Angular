@@ -8,7 +8,6 @@ import { HttpDataService } from '../../services/http-data.service';
 import * as _ from 'lodash';
 import {Router} from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import {Office} from "../../models/office";
 
 @Component({
   selector: 'app-accounts',
@@ -91,11 +90,6 @@ export class AccountsComponent implements OnInit, AfterViewInit {
    get f(){
     return this.registerForm.controls;
    }
-  editItem(element): void {
-    console.log(element);
-    this.accountData = _.cloneDeep(element);
-    this.isEditMode = true;
-  }
   cancelEdit(): void {
     this.isEditMode = false;
     this.accountForm.resetForm();
@@ -107,18 +101,6 @@ export class AccountsComponent implements OnInit, AfterViewInit {
       });
     });
     console.log(this.dataSource.data);
-  }
-   updateAccount(): void {
-    this.httpDataService.updateItem(this.accountData.id, this.accountData)
-      .subscribe((response: any) => {
-        this.dataSource.data = this.dataSource.data.map((o: Account) => {
-          if (o.id === response.id) {
-            o = response;
-          }
-          return o;
-        });
-        this.cancelEdit();
-      });
   }
   onSubmit() {
     this.submitted = true;

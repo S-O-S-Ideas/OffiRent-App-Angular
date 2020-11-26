@@ -1,0 +1,44 @@
+<div class="grid-container">
+  <div class="grid-item">
+    <div>
+      <img class="logo" routerLink="/login" src="assets/img/offirent.png" alt="">
+    </div>
+    <mat-form-field class="text-field1" floatLabel="always">
+      <mat-label>E-mail</mat-label>
+      <label>
+        <input  matInput placeholder="offiuser@gmail.com">
+      </label>
+    </mat-form-field>
+
+    <mat-form-field class="text-field2"  floatLabel="always">
+      <mat-label>Contraseña</mat-label>
+      <label>
+        <input matInput [type]="hide ? 'password' : 'text'">
+      </label>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <button  class="btn_login" mat-raised-button>Log In</button>
+    <button  class="btn_login" routerLink="/register" mat-raised-button>Registrate</button>
+    <div class="about">
+      <p class="about_title">¿Qué es OffiRent?</p>
+      <p class="about_text">Aquí en OffiRent, te ayudamos a encontrar una oficina o un espacio de trabajo de acuerdo a tus preferencias. Asimismo te facilitamos la búsqueda de clientes en caso quieras publicar una oficina desde nuestra plataforma.</p>
+      <a href="https://s-o-s-ideas.github.io/LandingPage-Offi-Rent-Source/" target="_blank">
+        <button class="btn_about" mat-raised-button>Conoce más sobre nosotros</button>
+      </a>
+    </div>
+  </div>
+  <div class="grid-item right_banner">
+    <div class="right-form">
+      <p class="welcome_title">Bienvenido a</p>
+      <h1 class="offirent_title">OffiRent</h1>
+      <p class="login_title">Ingresa con tu cuenta</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+

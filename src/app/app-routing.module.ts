@@ -8,9 +8,13 @@ import {OfficesComponent} from './pages/offices/offices.component';
 import {AccountComponent} from './pages/account/account.component';
 import {AccountsComponent} from './pages/accounts/accounts.component';
 import {OfficesSearchComponent} from './pages/offices-search/offices-search.component';
+import {LoginComponent} from './pages/login/login.component';
+import {RegisterComponent} from './pages/register/register.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'my-offices', component: OfficesComponent },
   { path: 'my-offices/new', component: OfficeComponent },
   { path: 'my-offices/:id', component: OfficeComponent },
@@ -18,8 +22,6 @@ const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'profile', component: AccountsComponent},
   { path: 'profile/edit', component: AccountComponent},
-  { path: 'about', component: AboutComponent },
-  { path: '**', component: PageNotFoundComponent },
   { path: 'about', component: AboutComponent },
   { path: '**', component: PageNotFoundComponent },
 

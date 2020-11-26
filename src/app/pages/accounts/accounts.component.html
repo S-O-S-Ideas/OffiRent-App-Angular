@@ -73,8 +73,8 @@
         </mat-card-header>
         <img mat-card-image src="https://st2.depositphotos.com/2309453/8796/i/950/depositphotos_87969200-stock-photo-manager-sitting-at-desk-and.jpg">
         <mat-card-actions>
-          <button mat-button color="primary">Editar Perfil</button>
-          <button mat-button color="warn">Desactivar Perfil</button>
+          <button mat-button color="primary" (click)="navigateToEditAccount()">Editar Perfil</button>
+          <button mat-button color="warn" (click)="open(content)">Desactivar Perfil</button>
         </mat-card-actions>
       </mat-card>
     </div>

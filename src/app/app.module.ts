@@ -27,8 +27,9 @@ import { OfficeComponent } from './pages/office/office.component';
 import { OfficesComponent } from './pages/offices/offices.component';
 
 import { AccountComponent } from './pages/account/account.component';
-import { LoginFormComponent } from './pages/login-form/login-form.component';
 import { AccountsComponent } from './pages/accounts/accounts.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 @NgModule({
@@ -39,11 +40,11 @@ import { AccountsComponent } from './pages/accounts/accounts.component';
     PageNotFoundComponent,
     OfficeComponent,
     OfficesComponent,
-    PageNotFoundComponent,
     AccountComponent,
-    LoginFormComponent,
     AccountsComponent,
-    OfficesSearchComponent
+    OfficesSearchComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
