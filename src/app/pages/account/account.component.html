@@ -1,0 +1,100 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Editar Perfil</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="registerForm" (submit)="onSubmit()" >
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" class="form-control" formControlName="firstName" required [ngClass]="{'is-invalid': submitted && f.firstName.errors}" />
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+          <div *ngIf="f.firstName.errors.required">>> required</div>
+        </div>
+      </div>
+      <p> </p>
+      <p> </p>
+      <div class="form-group">
+        <label>Apellidos</label>
+        <input type="text" class="form-control" formControlName="lastName" required [ngClass]="{'is-invalid': submitted && f.lastName.errors}" />
+        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+          <div *ngIf="f.lastName.errors.required">>> required</div>
+        </div>
+      </div>
+      <p> </p>
+      <p> </p>
+      <div class="form-group">
+      <label>E-mail</label>
+      <input type="text" class="form-control" formControlName="email" required [ngClass]="{'is-invalid': submitted && f.email.errors}" />
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">>> required</div>
+        <div *ngIf="f.email.errors.email">>> Debe ser un e-mail valido</div>
+      </div>
+      </div>
+      <p> </p>
+      <p> </p>
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="text" class="form-control" formControlName="password" required [ngClass]="{'is-invalid': submitted && f.password.errors}" />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">>> required</div>
+          <div *ngIf="f.password.errors.minlength">>> Debe tener como minimo 6 caracteres</div>
+        </div>
+      </div>
+      <p> </p>
+      <p> </p>
+      <div class="form-group">
+        <label>DNI</label>
+        <input type="text" class="form-control" formControlName="identification" required [ngClass]="{'is-invalid': submitted && f.identification.errors}" />
+        <div *ngIf="submitted && f.identification.errors" class="invalid-feedback">
+          <div *ngIf="f.identification.errors.required">>> required</div>
+        </div>
+      </div>
+      <p> </p>
+      <p> </p>
+      <div class="form-group">
+        <label>Telefono</label>
+        <input type="text" class="form-control" formControlName="phoneNumber" required [ngClass]="{'is-invalid': submitted && f.phoneNumber.errors}" />
+        <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+          <div *ngIf="f.phoneNumber.errors.required">>> required</div>
+          <div *ngIf="f.password.errors.minlength">>> El numero de telefono debe tener 9 caracteres</div>
+        </div>
+      </div>
+      <p> </p>
+      <p> </p>
+      <p>
+        <ng-container>
+             <button mat-raised-button  (click)="open(content)">Cambiar a Premium</button>
+        </ng-container>
+      </p>
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title"
+              id="modal-basic-title">
+            Será redireccionado a otra ventana para hacer el pago de la membresía premium.
+          </h4>
+          <button type="button" class="close"
+                  aria-label="Close" (click)=
+                    "modal.dismiss('Cross click')">
+
+            <span aria-hidden="true">
+                ×
+            </span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button"
+                  class="btn btn-outline-dark"
+                  (click)="modal.close('Save click')">
+            Acepto
+          </button>
+        </div>
+      </ng-template>
+       <p>
+        <ng-container>
+          <button mat-raised-button style="margin: 0" color="primary" (click)="onUpdateProfile()">Guardar cambios</button>
+          <a mat-raised-button color="warn" style="margin-left: 50px" (click)="cancelEdit()">Cancelar</a>
+        </ng-container>
+      </p>
+    </form>
+  </mat-card-content>
+</mat-card>

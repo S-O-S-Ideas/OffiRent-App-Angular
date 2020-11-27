@@ -1,78 +1,66 @@
 {
-  "students": [
-    {
-      "id": 1,
-      "name": "John Doe",
-      "age": 25,
-      "address": "New Location"
-    },
-    {
-      "id": 2,
-      "name": "Jason Bourne",
-      "age": 20,
-      "address": "Unknown"
-    },
-    {
-      "id": 3,
-      "name": "William Norton",
-      "age": 30,
-      "address": "One Place"
-    },
-    {
-      "id": 4,
-      "name": "Steven Strange",
-      "age": 18,
-      "address": "Santum Santorum"
-    },
-    {
-      "id": 5,
-      "name": "Mike Myers",
-      "age": 24,
-      "address": "The Final Place"
-    },
-    {
-      "name": "Peter Parker",
-      "age": 26,
-      "address": "New York",
-      "id": 6
-    },
-    {
-      "name": "Scott Lang",
-      "age": "38",
-      "address": "New York",
-      "id": 7
-    },
-    {
-      "name": "Clark Kent",
-      "age": 35,
-      "address": "Metropolis",
-      "id": 8
-    },
-    {
-      "name": "Another",
-      "age": 25,
-      "address": "Well",
-      "id": 9
-    },
-    {
-      "name": "Tom Jarvis",
-      "age": 20,
-      "address": "His Home",
-      "id": 10
-    }
-  ],
-  "reservations": [
-    {
-      "id": 1,
-      "status": false,
-      "initialDate": "20-10-01",
-      "endDate": "20-10-02"
-    },
-    {
-      "id": 2,
-      "status": true,
-      "initialDate": "20-11-10",
-      "endDate": "20-11-13"
-    }
-  ]
+    "students": [{
+            "id": 1,
+            "name": "John Doe",
+            "age": 25,
+            "address": "New Location"
+        },
+        {
+            "id": 2,
+            "name": "Jason Bourne",
+            "age": 20,
+            "address": "Unknown"
+        },
+        {
+            "id": 3,
+            "name": "William Norton",
+            "age": 30,
+            "address": "One Place"
+        },
+        {
+            "id": 4,
+            "name": "Steven Strange",
+            "age": 18,
+            "address": "Santum Santorum"
+        },
+        {
+            "id": 5,
+            "name": "Mike Myers",
+            "age": 24,
+            "address": "The Final Place"
+        },
+        {
+            "name": "Peter Parker",
+            "age": 26,
+            "address": "New York",
+            "id": 6
+        },
+        {
+            "name": "Scott Lang",
+            "age": "38",
+            "address": "New York",
+            "id": 7
+        },
+        {
+            "name": "Clark Kent",
+            "age": 35,
+            "address": "Metropolis",
+            "id": 8
+        },
+        {
+            "name": "Another",
+            "age": 25,
+            "address": "Well",
+            "id": 9
+        },
+        {
+            "name": "Tom Jarvis",
+            "age": 20,
+            "address": "His Home",
+            "id": 10
+        }
+    ],
+    "offices": [
+        { "id": 1, "address": "wdawddawdawdawdaw", "floor": 5, "capacity": 5, "allowResource": true, "score": 3.5, "description": "dfdsfdfds", "price": 30.0, "status": true, "comment": "fsdfsfsdfsdf" }, { "id": 2, "address": "av.rafael", "floor": 2, "capacity": 5, "allowResource": true, "score": 5.0, "description": "string", "price": 30.0, "status": true, "comment": "es un buen edificio" }, { "id": 3, "address": "av.la marina", "floor": 3, "capacity": 4, "allowResource": true, "score": 5.0, "description": "string", "price": 40.0, "status": true, "comment": "vista frente al mar" }, { "id": 4, "address": "av.abancay", "floor": 3, "capacity": 14, "allowResource": true, "score": 5.0, "description": "string", "price": 40.0, "status": true, "comment": "vista frente al mar" }, { "id": 5, "address": "av.abancay", "floor": 3, "capacity": 14, "allowResource": true, "score": 5.0, "description": "string", "price": 40.0, "status": true, "comment": "vista frente al mar" }, { "id": 6, "address": "av.abancay", "floor": 3, "capacity": 14, "allowResource": true, "score": 5.0, "description": "string", "price": 40.0, "status": true, "comment": "vista frente al mar" }, { "id": 7, "address": "av.abancay", "floor": 3, "capacity": 14, "allowResource": true, "score": 5.0, "description": "string", "price": 40.0, "status": true, "comment": "vista frente al mar" }, { "id": 8, "address": "av.abancay", "floor": 3, "capacity": 14, "allowResource": true, "score": 5.0, "description": "string", "price": 40.0, "status": true, "comment": "vista frente al mar" }, { "id": 9, "address": "av.abancay", "floor": 3, "capacity": 14, "allowResource": true, "score": 5.0, "description": "string", "price": 40.0, "status": true, "comment": "vista frente al mar" }
+    ]
 }

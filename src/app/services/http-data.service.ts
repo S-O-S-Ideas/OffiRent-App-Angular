@@ -1,23 +1,40 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {Student} from '../models/student';
+import {Account} from '../models/account';
 import {catchError, retry} from 'rxjs/operators';
+import {Office} from '../models/office';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpDataService {
   // Students Endpoint
-  basePath = 'http://localhost:3000/api/students';
+  basePath = 'https://offirent-develop.herokuapp.com/api/';
   constructor(private http: HttpClient) { }
-  // Http Default Options
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type' : 'application/json'
     })
   };
-  // API Error Handling
+  createItem(item): Observable<Account> {
+    return this.http.post<Account>(this.basePath, JSON.stringify(item), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  getItem(id): Observable<Account> {
+    return this.http.get<Account>(`${this.basePath}/${id}`, this.httpOptions )
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  updateItem(id, item): Observable<Account>{
+    return this.http.put<Account>(`${this.basePath}/${id}`, JSON.stringify(item), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  // Delete Student
+  deleteItem(id): Observable<any> {
+    return this.http.delete<Account>(`${this.basePath}/${id}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
   handleError(error: HttpErrorResponse): Observable<never> {
     if (error.error instanceof ErrorEvent) {
       console.log('An error occurred: ', error.error.message);
@@ -27,29 +44,36 @@ export class HttpDataService {
     }
     return throwError('Something happened with request, please try again later.');
   }
-  // Create Student
-  createItem(item): Observable<Student> {
-    return this.http.post<Student>(this.basePath, JSON.stringify(item), this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
+
+  getProfile(): any{
+    return this.http.get('https://offirent-develop.herokuapp.com/api/accounts/');
   }
-  // Get Student by Id
-  getItem(id): Observable<Student> {
-    return this.http.get<Student>(`${this.basePath}/${id}`, this.httpOptions )
+  getList(): Observable<Office>{
+    return this.http.get<Office>(this.basePath)
       .pipe(retry(2), catchError(this.handleError));
   }
   // Get Student Data
-  getList(): Observable<Student>{
-    return this.http.get<Student>(this.basePath)
+  getListOffice(): Observable<Array<Office>>{
+    return this.http.get<Array<Office>>(`${this.basePath}/offices`)
       .pipe(retry(2), catchError(this.handleError));
   }
-  // Update Student
-  updateItem(id, item): Observable<Student>{
-    return this.http.put<Student>(`${this.basePath}/${id}`, JSON.stringify(item), this.httpOptions)
+  updateProfile( ): Observable<Account> {
+    const editAccount = {
+      firstName: 'Pablo',
+      lastName: 'de los Backyardigans',
+      email: 'pablo123@hotmail.com',
+      password: 'pablo1234',
+      identification: '72949109',
+      phoneNumber: 987654321
+    };
+    // tslint:disable-next-line:max-line-length
+    return this.http.put<Account> (`${this.basePath}/accounts/`, JSON.stringify(editAccount), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
-  // Delete Student
-  deleteItem(id): Observable<any> {
-    return this.http.delete<Student>(`${this.basePath}/${id}`, this.httpOptions)
+
+  getAccount(id): Observable<Account> {
+    return this.http.get<Account>(`${this.basePath}/accounts/${id}`, this.httpOptions )
       .pipe(retry(2), catchError(this.handleError));
   }
+
 }

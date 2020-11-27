@@ -1,0 +1,48 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ isEditMode ? 'Editar Oficina' : 'Agregar Oficina' }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form (submit)="onSubmit()" #officeForm="ngForm">
+      <p>
+        <mat-form-field>
+          <mat-label>Dirección</mat-label>
+          <input matInput placeholder="Address" name="address" required [(ngModel)]="officeData.address">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Piso</mat-label>
+          <input matInput placeholder="Floor" name="floor" type="number" required [(ngModel)]="officeData.floor">
+          <span matPrefix># &nbsp;</span>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Capacidad</mat-label>
+          <input matInput placeholder="Capacity" name="capacity" type="number" required [(ngModel)]="officeData.capacity">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Descripción</mat-label>
+          <input matInput placeholder="Description" name="description" required [(ngModel)]="officeData.description">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Precio</mat-label>
+          <input matInput placeholder="Price" name="price" type="number" required [(ngModel)]="officeData.price">
+          <span matPrefix>S/ &nbsp;</span>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Comentario</mat-label>
+          <input matInput placeholder="Comment" name="comment" required [(ngModel)]="officeData.comment">
+        </mat-form-field>
+      </p>
+      <p>
+        <ng-container>
+          <button mat-button color="primary">{{ isEditMode ? 'Actualizar' : 'Agregar'}}</button>
+          <a mat-button color="warn" (click)="cancelEdit()">Cancelar</a>
+        </ng-container>
+      </p>
+    </form>
+  </mat-card-content>
+</mat-card>

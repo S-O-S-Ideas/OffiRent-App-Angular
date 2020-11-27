@@ -43,7 +43,7 @@ export class StudentComponent implements OnInit {
   retrieveStudent(id): void {
     this.httpDataService.getItem(id)
       .subscribe((response: Student) => {
-        this.studentData = {} as Student;
+
         this.studentData = _.cloneDeep(response);
         console.log(response);
         console.log(this.studentData);
