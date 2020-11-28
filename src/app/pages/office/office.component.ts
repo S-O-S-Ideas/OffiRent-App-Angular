@@ -16,9 +16,9 @@ export class OfficeComponent implements OnInit {
   isEditMode = false;
   officeId: number;
   officeData: Office = new Office();
-  defaultOffice = {
-    id: 0, address: '', floor: null, capacity: null, allowResource: true, score: 0, description: '',
-    price: null, status: true, comment: ''};
+  updateData: Office = new Office();
+  defaultOffice = { id: 0, address: '', floor: null, capacity: null, allowResource: true, score: 0, description: '',
+    price: null, status: true, comment: '', accountId: 0, districtId: 0};
   constructor(private httpDataService: HttpDataService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -43,8 +43,9 @@ export class OfficeComponent implements OnInit {
     this.officeData = this.defaultOffice;
   }
   retrieveOffice(id): void {
-    this.httpDataService.getItem(id)
-      .subscribe(() => {
+    console.log('se esta retriven');
+    this.httpDataService.getOffice(id)
+      .subscribe((Response) => {
         this.officeData = {} as Office;
         this.officeData = _.cloneDeep(Response);
         console.log(Response);
@@ -52,9 +53,10 @@ export class OfficeComponent implements OnInit {
       });
   }
   addOffice(): void {
-    const newOffice = { address: this.officeData.address, floor: this.officeData.floor,
+    const newOffice = { id: this.officeData.id, address: this.officeData.address, floor: this.officeData.floor,
       capacity: this.officeData.capacity, description: this.officeData.description,
-      price: this.officeData.price, comment: this.officeData.comment };
+      price: this.officeData.price, comment: this.officeData.comment, accountId: this.officeData.accountId,
+      districtId: this.officeData.districtId};
     this.httpDataService.createOfficina(newOffice)
       .subscribe(() => {
         this.navigateToOffices();
@@ -65,7 +67,9 @@ export class OfficeComponent implements OnInit {
   }
 
   updateOffice(): void {
-    this.httpDataService.updateItem(this.officeData.id, this.officeData as Office);
+    console.log('se esta guardadno');
+    console.log(this.officeData);
+    this.httpDataService.updateOfficina(this.officeData.id, this.officeData as Office);
     this.navigateToOffices();
   }
   onSubmit(): void {

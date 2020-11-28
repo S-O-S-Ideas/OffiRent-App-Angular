@@ -8,6 +8,7 @@ export class Office {
   description: string;
   price: number;
   status: boolean;
-
   comment: string;
+  districtId: number;
+  accountId: number;
 }
