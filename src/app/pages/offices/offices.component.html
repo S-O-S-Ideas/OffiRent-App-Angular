@@ -1,0 +1,67 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Mis Oficinas</mat-card-title>
+    <mat-card-subtitle>{{ isEditMode ? 'Editar Oficina' : 'Vista de todas tus oficinas' }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-grid-list cols="1" rowHeight="100px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Filtrar</mat-label>
+          <select matNativeControl required>
+            <option value="id">Id</option>
+            <option value="address">Dirección</option>
+            <option value="floor">Piso</option>
+            <option value="capacity">Capacidad</option>
+            <option value="price">Precio</option>
+          </select>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{ element.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef> Dirección </th>
+        <td mat-cell *matCellDef="let element"> {{ element.address }}</td>
+      </ng-container>
+      <ng-container matColumnDef="floor">
+        <th mat-header-cell *matHeaderCellDef> Piso</th>
+        <td mat-cell *matCellDef="let element"> {{ element.floor }}</td>
+      </ng-container>
+      <ng-container matColumnDef="capacity">
+        <th mat-header-cell *matHeaderCellDef> Capacidad </th>
+        <td mat-cell *matCellDef="let element"> {{ element.capacity }}</td>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Descripción </th>
+        <td mat-cell *matCellDef="let element"> {{ element.description }}</td>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Precio </th>
+        <td mat-cell *matCellDef="let element"> {{ element.price }}</td>
+      </ng-container>
+      <ng-container matColumnDef="comment">
+        <th mat-header-cell *matHeaderCellDef> Comentario </th>
+        <td mat-cell *matCellDef="let element"> {{ element.comment }}</td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+          <a href="javascript:void(0)"  (click)="navigateToEditStudent(element.id)"><mat-icon inline aria-hidden="false" aria-label="Edit" style="padding-right: 10px;">edit</mat-icon></a>
+          <!--<a href="javascript:void(0)"  (click)="editItem(element)"><mat-icon inline aria-hidden="false" aria-label="Edit" style="padding-right: 10px;">detalle</mat-icon></a>-->
+          <a href="javascript:void(0)" (click)="deleteItem(element.id)"><mat-icon inline aria-hidden="false" aria-label="Delete">delete</mat-icon></a>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          [ngClass]="{'editable-row': officeData.id === row.id}"></tr>
+    </table>
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-button color="primary" (click)="navigateToAddOffice()">Agregar Oficina</a>
+  </mat-card-actions>
+</mat-card>

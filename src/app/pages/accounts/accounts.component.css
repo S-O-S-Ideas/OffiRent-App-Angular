@@ -1,0 +1,13 @@
+.example-card {
+  width: 1000px;
+}
+.example-container {
+  width: 500px;
+  height: 500px;
+  margin-right: 400px;
+}
+.fill{
+  left: 600px;
+  top: 10px;
+}
+

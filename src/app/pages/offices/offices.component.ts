@@ -1,35 +1,34 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Student } from '../../models/student';
+import { Office } from '../../models/office';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { HttpDataService } from '../../services/http-data.service';
 import * as _ from 'lodash';
 import {Router} from '@angular/router';
-
 @Component({
-  selector: 'app-students',
-  templateUrl: './students.component.html',
-  styleUrls: ['./students.component.css']
+  selector: 'app-offices',
+  templateUrl: './offices.component.html',
+  styleUrls: ['./offices.component.css']
 })
-export class StudentsComponent implements OnInit, AfterViewInit {
-  @ViewChild('studentForm', { static: false })
-  studentForm: NgForm;
-  studentData: Student;
+export class OfficesComponent implements OnInit, AfterViewInit {
+  @ViewChild('officeForm', { static: false })
+  officeForm: NgForm;
+  officeData: Office;
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['id', 'name', 'age', 'address', 'actions'];
+  displayedColumns: string[] = ['id', 'address', 'floor', 'capacity', 'description', 'price', 'comment', 'actions'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   isEditMode = false;
 
   constructor(private httpDataService: HttpDataService, private router: Router) {
-    this.studentData = {} as Student;
+    this.officeData = {} as Office;
   }
 
   ngOnInit(): void {
     this.dataSource.sort = this.sort;
-    this.getAllStudents();
+    this.getAllOffices();
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -42,39 +41,41 @@ export class StudentsComponent implements OnInit, AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  getAllStudents(): void {
-    this.httpDataService.getList().subscribe((response: any) => {
+  getAllOffices(): void {
+    this.httpDataService.getListOffice().subscribe((response: any) => {
       this.dataSource.data = response;
     });
   }
   editItem(element): void {
     console.log(element);
-    this.studentData = _.cloneDeep(element);
+    this.officeData = _.cloneDeep(element);
     this.isEditMode = true;
   }
   cancelEdit(): void {
     this.isEditMode = false;
-    this.studentForm.resetForm();
+    this.officeForm.resetForm();
   }
   deleteItem(id): void {
-    this.httpDataService.deleteItem(id).subscribe(() => {
-      this.dataSource.data = this.dataSource.data.filter((o: Student) => {
+    this.httpDataService.deleteOffice(id).subscribe(() => {
+      this.dataSource.data = this.dataSource.data.filter((o: Office) => {
         return o.id !== id ? o : false;
       });
     });
     console.log(this.dataSource.data);
   }
-  addStudent(): void {
-    const newStudent = {name: this.studentData.name, age: this.studentData.age, address: this.studentData.address};
-    this.httpDataService.createItem(newStudent).subscribe((response: any) => {
+  addOffice(): void {
+    const newOffice = {address: this.officeData.address, floor: this.officeData.floor,
+      capacity: this.officeData.capacity, description: this.officeData.description,
+      price: this.officeData.price, comment: this.officeData.comment};
+    this.httpDataService.createItem(newOffice).subscribe((response: any) => {
       this.dataSource.data.push({...response});
       this.dataSource.data = this.dataSource.data.map(o => o);
     });
   }
-  updateStudent(): void {
-    this.httpDataService.updateItem(this.studentData.id, this.studentData)
+  updateOffice(): void {
+    this.httpDataService.updateOfficina(this.officeData.id, this.officeData)
       .subscribe((response: any) => {
-        this.dataSource.data = this.dataSource.data.map((o: Student) => {
+        this.dataSource.data = this.dataSource.data.map((o: Office) => {
           if (o.id === response.id) {
             o = response;
           }
@@ -84,20 +85,21 @@ export class StudentsComponent implements OnInit, AfterViewInit {
       });
   }
   onSubmit(): void {
-    if (this.studentForm.form.valid) {
+    if (this.officeForm.form.valid) {
       if (this.isEditMode) {
-        this.updateStudent();
+        this.updateOffice();
       } else {
-        this.addStudent();
+        this.addOffice();
       }
     } else {
       console.log('Invalid Data');
     }
   }
-  navigateToAddStudent(): void {
-    this.router.navigate(['/students/new']).then(() => null);
+  navigateToAddOffice(): void {
+    this.router.navigate(['/my-offices/new']).then(() => null);
   }
-  navigateToEditStudent(studentId): void {
-    this.router.navigate([`/students/${studentId}`]).then(() => null);
+  navigateToEditStudent(officeId): void {
+    console.log(officeId);
+    this.router.navigate([`/my-offices/${officeId}`]).then(() => null);
   }
 }
