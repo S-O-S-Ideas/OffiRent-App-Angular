@@ -7,7 +7,6 @@ import { MatSort } from '@angular/material/sort';
 import { HttpDataService } from '../../services/http-data.service';
 import * as _ from 'lodash';
 import {Router} from '@angular/router';
-
 @Component({
   selector: 'app-offices',
   templateUrl: './offices.component.html',
@@ -18,7 +17,7 @@ export class OfficesComponent implements OnInit, AfterViewInit {
   officeForm: NgForm;
   officeData: Office;
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['id', 'address', 'floor', 'capacity', 'description', 'price', 'comment'];
+  displayedColumns: string[] = ['id', 'address', 'floor', 'capacity', 'description', 'price', 'comment', 'actions'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   isEditMode = false;
@@ -57,7 +56,7 @@ export class OfficesComponent implements OnInit, AfterViewInit {
     this.officeForm.resetForm();
   }
   deleteItem(id): void {
-    this.httpDataService.deleteItem(id).subscribe(() => {
+    this.httpDataService.deleteOffice(id).subscribe(() => {
       this.dataSource.data = this.dataSource.data.filter((o: Office) => {
         return o.id !== id ? o : false;
       });
@@ -74,7 +73,7 @@ export class OfficesComponent implements OnInit, AfterViewInit {
     });
   }
   updateOffice(): void {
-    this.httpDataService.updateItem(this.officeData.id, this.officeData)
+    this.httpDataService.updateOfficina(this.officeData.id, this.officeData)
       .subscribe((response: any) => {
         this.dataSource.data = this.dataSource.data.map((o: Office) => {
           if (o.id === response.id) {
@@ -100,6 +99,7 @@ export class OfficesComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/my-offices/new']).then(() => null);
   }
   navigateToEditStudent(officeId): void {
+    console.log(officeId);
     this.router.navigate([`/my-offices/${officeId}`]).then(() => null);
   }
 }
