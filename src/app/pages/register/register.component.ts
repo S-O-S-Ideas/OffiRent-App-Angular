@@ -29,8 +29,10 @@ export class RegisterComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   register(): void{
-    const newStudent = {firstName: this.registerData.firstName, lastName: this.registerData.lastName,
-      email: this.registerData.email};
+    const newStudent = {email: this.registerData.email, password: this.registerData.password,
+      identification: this.registerData.identification, accType: this.registerData.accType,
+      firstName: this.registerData.firstName, lastName: this.registerData.lastName,
+      phone: this.registerData.phone, premiun: this.registerData.premium};
     this.httpDataService.createAccount(newStudent)
       .subscribe(() => {
         this.navigateToLogin();

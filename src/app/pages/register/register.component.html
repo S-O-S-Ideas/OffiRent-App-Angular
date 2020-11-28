@@ -37,11 +37,27 @@
           </mat-form-field>
         </div>
       </div>
+      <div class="grid-container">
+        <div class="grid-item">
+          <mat-form-field class="text-field_first_name" floatLabel="always">
+            <mat-label>Tipo de cuenta</mat-label>
+            <input matInput name="accType" type="number" required [(ngModel)]="registerData.accType">
+          </mat-form-field>
+        </div>
+        <div class="grid-item">
+          <mat-form-field class="text-field_last_name" floatLabel="always">
+            <mat-label>Premiun</mat-label>
+            <input matInput name="premiun" type="number" required [(ngModel)]="registerData.premium">
+          </mat-form-field>
+        </div>
+      </div>
       <mat-form-field class="text-field2" floatLabel="always">
         <mat-label>Contraseña</mat-label>
         <input matInput name="password" type="password" [(ngModel)]="registerData.password">
       </mat-form-field>
-      <button class="btn_register">Registrate</button>
+      <ng-container>
+        <button mat-button class="btn_register">Registrate</button>
+      </ng-container>
     </form>
     <button routerLink="/login" class="btn_register" mat-raised-button>¿Ya tienes una cuenta?</button>
   </div>

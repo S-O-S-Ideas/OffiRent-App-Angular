@@ -8,8 +8,7 @@ export class Account{
   accType: number;
   firstName: string;
   lastName: string;
-  premium: boolean;
   phone: number;
-  premiun:boolean;
+  premium: boolean;
   // reservation: Reservation;
 }

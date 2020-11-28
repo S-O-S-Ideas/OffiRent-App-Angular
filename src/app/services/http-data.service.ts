@@ -97,14 +97,11 @@ export class HttpDataService {
   }
 
   createOfficina(item): Observable<Office> {
-    console.log(JSON.stringify(item));
     return this.http.post<Office>(`${this.basePath}accounts/${item.accountId}/District=${item.districtId}/offices`,
       JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
   updateOfficina(id, item): Observable<Office>{
-    console.log('aca se esta actulizando');
-    console.log(JSON.stringify(item));
     return this.http.put<Office>(`${this.basePath}offices/${id}`, JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
@@ -118,7 +115,7 @@ export class HttpDataService {
   }
 
   createAccount(item): Observable<Account> {
-    return this.http.post<Account>(this.basePath, JSON.stringify(item), this.httpOptions)
+    return this.http.post<Account>(`${this.basePath}accounts`, JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
