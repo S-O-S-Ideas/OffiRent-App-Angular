@@ -8,6 +8,7 @@ import { HttpDataService } from '../../services/http-data.service';
 import * as _ from 'lodash';
 import {Router} from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import {TokenStorageService} from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-accounts',
@@ -17,6 +18,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class AccountsComponent implements OnInit, AfterViewInit {
 
   constructor(
+    private tokenStorageService: TokenStorageService,
     private httpDataService: HttpDataService,
     private router: Router,
     private modalService: NgbModal,
@@ -25,12 +27,15 @@ export class AccountsComponent implements OnInit, AfterViewInit {
    }
   @ViewChild('accountForm', { static: false })
   accountForm: NgForm;
+  currentUser: any;
+  hide = true;
+  show = false;
   submitted = false;
   registerForm: FormGroup;
   accountData: Account;
   accounts: Array<any>;
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'password', 'identification', 'phoneNumber', 'isPremium'];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'password', 'identification', 'phoneNumber', 'premium'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   isEditMode = false;
@@ -57,16 +62,21 @@ export class AccountsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    // this.currentUser = this.tokenStorageService.getUser();
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', Validators.required, Validators.email],
       password: ['', Validators.required, Validators.minLength(6)],
       identification: ['', Validators.required],
-      phoneNumber: ['', Validators.required, Validators.minLength(9)]
+      phoneNumber: ['', Validators.required, Validators.minLength(9)],
+      premium: ['', Validators.required]
     });
-    this.retrieveAccount(2);
+    this.retrieveAccount(7);
     this.httpDataService.getProfile().subscribe(data => this.accounts = data);
+  }
+  toogleTag(): void {
+    this.show = !this.show;
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -87,31 +97,17 @@ export class AccountsComponent implements OnInit, AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-   get f(){
-    return this.registerForm.controls;
-   }
   cancelEdit(): void {
     this.isEditMode = false;
     this.accountForm.resetForm();
   }
   deleteItem(id): void {
-    this.httpDataService.deleteItem(id).subscribe(() => {
+    this.httpDataService.deleteAccount(id).subscribe(() => {
       this.dataSource.data = this.dataSource.data.filter((o: Account) => {
         return o.id !== id ? o : false;
       });
     });
     console.log(this.dataSource.data);
-  }
-  onSubmit() {
-    this.submitted = true;
-
-    if (this.registerForm.invalid) {
-      return;
-    }
-
-    console.log('email=' + this.f.email.value);
-    console.log('username=' + this.f.firstName.value);
-    console.log('password=' + this.f.password.value);
   }
   navigateToEditAccount(): void {
     this.router.navigate([`/profile/edit`]).then(() => null);

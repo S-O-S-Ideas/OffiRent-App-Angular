@@ -30,6 +30,7 @@ import { AccountComponent } from './pages/account/account.component';
 import { AccountsComponent } from './pages/accounts/accounts.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import {MatPseudoCheckboxModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { RegisterComponent } from './pages/register/register.component';
     NgbModule,
     IvyCarouselModule,
     NgbModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPseudoCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

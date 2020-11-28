@@ -17,83 +17,44 @@
   <div class="modal-footer">
     <button type="button"
             class="btn btn-outline-dark"
-            (click)="modal.close('Not implementation yet')">
+            (click)="deleteItem(7)">
       Acepto
     </button>
   </div>
 </ng-template>
 
-
-    <!--<mat-grid-list cols="2">
-      <mat-grid-tile>
-        <mat-card class="example-card">
-          <mat-card-header>
-            <mat-card-title >{{ accountData.firstName + ' '+ accountData.lastName}}</mat-card-title>
-            <mat-card-subtitle>OffiProvider</mat-card-subtitle>
-          </mat-card-header>
-          <img mat-card-image src="https://st2.depositphotos.com/2309453/8796/i/950/depositphotos_87969200-stock-photo-manager-sitting-at-desk-and.jpg">
-          <mat-card-actions>
-            <button mat-button color="primary">Editar Perfil</button>
-            <button mat-button color="warn">Desactivar Perfil</button>
-            <a mat-raised-button color="primary" style="margin-left: 100px" (click)="navigateToEditAccount()">Editar Perfil</a>
-            <a mat-raised-button color="warn" style="margin-left: 500px" (click)="open(content)">Desactivar Perfil</a>
-          </mat-card-actions>
-        </mat-card>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <mat-card>
-          <div class="example-container">
-            <div class="row">
-              <div class="col-md-6">
-                <mat-card-content>
-                  <h1 style="margin-left: 20px">Datos Personales: </h1>
-                  <h2>{{ 'E-mail: ' + accountData.email}}</h2>
-                  <p> </p>
-                  <p> </p>
-                  <h2>{{ 'DNI: ' + accountData.identification}}</h2>
-                  <p> </p>
-                  <p> </p>
-                  <h2>{{ 'Telefono: ' + accountData.phone}}</h2>
-                  <p> </p>
-                  <p> </p>
-                </mat-card-content>
-              </div>
-            </div>
-          </div>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>-->
-<div class="container">
+<div class="container_data">
   <div class="row">
     <div class="col-6">
       <mat-card>
         <mat-card-header>
-          <mat-card-title >{{ accountData.firstName + ' '+ accountData.lastName}}</mat-card-title>
-          <mat-card-subtitle>OffiProvider</mat-card-subtitle>
+          <mat-card-title class="offiprovider">{{ accountData.firstName + ' '+ accountData.lastName}}</mat-card-title>
+          <p></p><p></p>
+          <mat-card-subtitle class="sub_offiprovider">OffiProvider</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="https://st2.depositphotos.com/2309453/8796/i/950/depositphotos_87969200-stock-photo-manager-sitting-at-desk-and.jpg">
+        <img mat-card-image class="photo_offiprovider" src="https://st2.depositphotos.com/2309453/8796/i/950/depositphotos_87969200-stock-photo-manager-sitting-at-desk-and.jpg">
         <mat-card-actions>
-          <button mat-button color="primary" (click)="navigateToEditAccount()">Editar Perfil</button>
-          <button mat-button color="warn" (click)="open(content)">Desactivar Perfil</button>
+          <button mat-button class="btn_edit" (click)="navigateToEditAccount()">Editar Perfil</button>
+          <button mat-button class="btn_edit" (click)="open(content)">Desactivar Perfil</button>
         </mat-card-actions>
       </mat-card>
     </div>
-    <div class="col-6">
+    <div class="container_data">
       <mat-card>
         <div class="example-container">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col">
               <mat-card-content>
-                <h1 style="margin-left: 20px">Datos Personales: </h1>
-                <h2>{{ 'E-mail: ' + accountData.email}}</h2>
-                <p> </p>
-                <p> </p>
-                <h2>{{ 'DNI: ' + accountData.identification}}</h2>
-                <p> </p>
-                <p> </p>
-                <h2>{{ 'Telefono: ' + accountData.phone}}</h2>
-                <p> </p>
-                <p> </p>
+                <h2 style="margin-top: 2vw" class="personal_data">Datos Personales</h2><hr>
+                <h2 style="margin-left: 1.5vw" class="data">{{ 'E-mail: ' + accountData.email}}</h2>
+                <h2 style="margin-left: 1.5vw" class="data">{{ 'DNI: ' + accountData.identification}}</h2>
+                <h2 style="margin-left: 1.5vw" class="data">{{ 'Telefono: ' + accountData.phone}}</h2>
+                <h2 style="margin-left: 1.5vw" class="data" >Contraseña:
+                <input type="checkbox" (click)="toogleTag()">
+                  <h2 class="data" *ngIf="show">{{accountData.password}}</h2>
+                </h2>
+                <h2 *ngIf="accountData.premium; else elseBlock" style="margin-left: 1.5vw" class="data">Actualmente cuenta con una membresía premium</h2>
+                <ng-template #elseBlock class="data">Usted no cuenta con una membresía premium</ng-template>
               </mat-card-content>
             </div>
           </div>

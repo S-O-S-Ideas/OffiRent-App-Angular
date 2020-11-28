@@ -3,24 +3,46 @@
     <div>
       <img class="logo" routerLink="/login" src="assets/img/offirent.png" alt="">
     </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field class="text-field1" floatLabel="always">
       <mat-label>E-mail</mat-label>
       <label>
-        <input  matInput placeholder="offiuser@gmail.com">
+        <input
+          matInput
+          formControlName="username"
+          type="email"
+          autocomplete="username"
+          placeholder="offiuser@gmail.com"
+          required>
       </label>
+      <mat-error *ngIf="form.controls.username.touched && form.controls.username.invalid">
+        <span *ngIf="form.controls.username.errors.required">E-mail es requierdo</span>
+        <span *ngIf="form.controls.username.errors.email">E-mail es invalido</span>
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field class="text-field2"  floatLabel="always">
       <mat-label>Contraseña</mat-label>
       <label>
-        <input matInput [type]="hide ? 'password' : 'text'">
+        <input
+          formControlName="password"
+          type="password"
+          autocomplete="password"
+          required
+          minlength="6"
+          matInput [type]="hide ? 'password' : 'text'">
       </label>
+      <mat-error *ngIf="form.controls.password.touched && form.controls.password.invalid">
+        <span *ngIf="form.controls.password.errors.required">Contraseña es requerida.</span>
+        <span *ngIf="form.controls.password.errors.minLength">Debe tener al menos 6 caracteres.</span>
+      </mat-error>
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </mat-form-field>
-    <button  class="btn_login" mat-raised-button>Log In</button>
+    <button  class="btn_login" mat-raised-button type="submit"  [disabled]="form.invalid">Log In</button>
     <button  class="btn_login" routerLink="/register" mat-raised-button>Registrate</button>
+    </form>
     <div class="about">
       <p class="about_title">¿Qué es OffiRent?</p>
       <p class="about_text">Aquí en OffiRent, te ayudamos a encontrar una oficina o un espacio de trabajo de acuerdo a tus preferencias. Asimismo te facilitamos la búsqueda de clientes en caso quieras publicar una oficina desde nuestra plataforma.</p>

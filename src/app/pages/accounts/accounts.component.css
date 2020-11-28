@@ -4,10 +4,43 @@
 .example-container {
   width: 500px;
   height: 500px;
-  margin-right: 400px;
+}
+.container_data{
+  margin-top: 4vw;
+  margin-left: 4vw;
+
+}
+.offiprovider {
+  font-size: 26pt;
+  font-family: 'Montserrat', sans-serif;
+}
+.sub_offiprovider {
+  font-size: 12pt;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 2vw;
 }
 .fill{
   left: 600px;
   top: 10px;
 }
-
+.btn_edit {
+  background-color: #2d2d33 !important;
+  border-radius: 20px;
+  text-align: center;
+  width: 40%;
+  color: white !important;
+}
+.personal_data {
+  font-family: 'Montserrat', sans-serif;
+  margin-left: 5vw;
+  margin-top: 12vw;
+  font-size: 2vw;
+  display: block;
+}
+.data {
+  margin-top: 1.5vw;
+  font-family: 'Montserrat', sans-serif;
+}
+.photo_offiprovider {
+  border-radius: 40px;
+}

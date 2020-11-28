@@ -4,7 +4,7 @@ export class Account{
   id: number;
   firstName: string;
   lastName: string;
-  isPremium: boolean;
+  premium: boolean;
   email: string;
   password: string;
   identification: string;

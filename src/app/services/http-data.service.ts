@@ -30,10 +30,6 @@ export class HttpDataService {
       .pipe(retry(2), catchError(this.handleError));
   }
   // Delete Student
-  deleteItem(id): Observable<any> {
-    return this.http.delete<Account>(`${this.basePath}/${id}`, this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
-  }
 
   handleError(error: HttpErrorResponse): Observable<never> {
     if (error.error instanceof ErrorEvent) {
@@ -47,6 +43,9 @@ export class HttpDataService {
 
   getProfile(): any{
     return this.http.get('https://offirent-develop.herokuapp.com/api/accounts/');
+  }
+  deleteProfile(): any {
+    return this.http.delete('https://offirent-develop.herokuapp.com/api/accounts/');
   }
   getList(): Observable<Office>{
     return this.http.get<Office>(this.basePath)
@@ -67,7 +66,7 @@ export class HttpDataService {
       phoneNumber: 987654321
     };
     // tslint:disable-next-line:max-line-length
-    return this.http.put<Account> (`${this.basePath}/accounts/`, JSON.stringify(editAccount), this.httpOptions)
+    return this.http.put<Account> (`${this.basePath}/accounts/7`, JSON.stringify(editAccount), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
@@ -75,5 +74,14 @@ export class HttpDataService {
     return this.http.get<Account>(`${this.basePath}/accounts/${id}`, this.httpOptions )
       .pipe(retry(2), catchError(this.handleError));
   }
+  deleteItem(id): Observable<any> {
+    return this.http.delete<Account>(`${this.basePath}/${id}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  deleteAccount(id): Observable<any> {
+    return this.http.delete<Account>(`${this.basePath}/accounts/${id}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
 
 }
