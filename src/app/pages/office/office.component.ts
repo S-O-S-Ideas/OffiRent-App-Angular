@@ -43,7 +43,6 @@ export class OfficeComponent implements OnInit {
     this.officeData = this.defaultOffice;
   }
   retrieveOffice(id): void {
-    console.log('se esta retriven');
     this.httpDataService.getOffice(id)
       .subscribe((Response) => {
         this.officeData = {} as Office;
@@ -67,8 +66,6 @@ export class OfficeComponent implements OnInit {
   }
 
   updateOffice(): void {
-    console.log('se esta guardadno');
-    console.log(this.officeData);
     this.httpDataService.updateOfficina(this.officeData.id, this.officeData as Office);
     this.navigateToOffices();
   }
