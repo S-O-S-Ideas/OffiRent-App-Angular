@@ -83,7 +83,13 @@ export class HttpDataService {
   }
 
   createReservation(item): Observable<Reservation> {
-    return this.http.post<Reservation>(`${this.basePath}/accounts/${item.AccountId}/office=${item.OfficeId}`,
+    return this.http.post<Reservation>(`${this.basePath}accounts/${item.AccountId}/Office=${item.OfficeId}/reservations`,
+      JSON.stringify(item), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  createOfficina(item): Observable<Reservation> {
+    return this.http.post<Reservation>(`${this.basePath}accounts/${item.AccountId}/District=${item.DistrictId}/offices`,
       JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }

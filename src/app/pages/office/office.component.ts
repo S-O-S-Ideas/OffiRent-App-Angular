@@ -55,7 +55,7 @@ export class OfficeComponent implements OnInit {
     const newOffice = { address: this.officeData.address, floor: this.officeData.floor,
       capacity: this.officeData.capacity, description: this.officeData.description,
       price: this.officeData.price, comment: this.officeData.comment };
-    this.httpDataService.createItem(newOffice)
+    this.httpDataService.createOfficina(newOffice)
       .subscribe(() => {
         this.navigateToOffices();
       });

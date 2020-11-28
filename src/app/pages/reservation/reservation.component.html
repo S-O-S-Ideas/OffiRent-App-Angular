@@ -9,21 +9,29 @@
           <mat-label>Status</mat-label>
           <input  matInput placeholder="Status" name="status" type="text" required [(ngModel)]="reservationData.status">
         </mat-form-field>
+      </p>
+      <p>
         <mat-form-field>
           <mat-label>Initial Date</mat-label>
           <input matInput placeholder="InitialDate" name="initialDate" type="date" required [(ngModel)]="reservationData.initialDate">
         </mat-form-field>
+      </p>
+      <p>
         <mat-form-field>
           <mat-label>End Date</mat-label>
           <input matInput placeholder="EndDate" name="endDate" type="date" required [(ngModel)]="reservationData.endDate">
         </mat-form-field>
+      </p>
+      <p>
         <mat-form-field>
           <mat-label>AccountId</mat-label>
-          <input matInput placeholder="EndDate" name="AccountId" required [(ngModel)]="reservationData.accountId">
+          <input matInput placeholder="EndDate" name="AccountId" type="number" required [(ngModel)]="reservationData.accountId">
         </mat-form-field>
+      </p>
+      <p>
         <mat-form-field>
           <mat-label>OfficeId</mat-label>
-          <input matInput placeholder="EndDate" name="OfficeId" required [(ngModel)]="reservationData.officeId">
+          <input matInput placeholder="EndDate" name="OfficeId" type="number" required [(ngModel)]="reservationData.officeId">
         </mat-form-field>
       </p>
       <p>
