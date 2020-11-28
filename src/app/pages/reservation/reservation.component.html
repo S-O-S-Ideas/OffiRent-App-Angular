@@ -7,20 +7,28 @@
       <p>
         <mat-form-field>
           <mat-label>Status</mat-label>
-          <input matInput placeholder="Status" name="status" type="checkbox" required [(ngModel)]="reservationData.status">
+          <input  matInput placeholder="Status" name="status" type="text" required [(ngModel)]="reservationData.status">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Initial Date</mat-label>
-          <input matInput placeholder="InitialDate" name="initialDate" required [(ngModel)]="reservationData.initialDate">
+          <input matInput placeholder="InitialDate" name="initialDate" type="date" required [(ngModel)]="reservationData.initialDate">
         </mat-form-field>
         <mat-form-field>
           <mat-label>End Date</mat-label>
-          <input matInput placeholder="EndDate" name="endDate" required [(ngModel)]="reservationData.endDate">
+          <input matInput placeholder="EndDate" name="endDate" type="date" required [(ngModel)]="reservationData.endDate">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>AccountId</mat-label>
+          <input matInput placeholder="EndDate" name="AccountId" required [(ngModel)]="reservationData.accountId">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>OfficeId</mat-label>
+          <input matInput placeholder="EndDate" name="OfficeId" required [(ngModel)]="reservationData.officeId">
         </mat-form-field>
       </p>
       <p>
         <ng-container>
-          <button mat-button color="primary">{{ isEditMode ? 'Update' : 'Add'}}</button>
+          <button mat-button color="primary">Add</button>
           <a mat-button color="warn" (click)="cancelEdit()">Cancel</a>
         </ng-container>
       </p>

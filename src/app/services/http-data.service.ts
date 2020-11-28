@@ -4,6 +4,7 @@ import {Observable, throwError} from 'rxjs';
 import {Account} from '../models/account';
 import {catchError, retry} from 'rxjs/operators';
 import {Office} from '../models/office';
+import {Reservation} from '../models/reservation';
 
 @Injectable({
   providedIn: 'root'
@@ -73,6 +74,17 @@ export class HttpDataService {
 
   getAccount(id): Observable<Account> {
     return this.http.get<Account>(`${this.basePath}/accounts/${id}`, this.httpOptions )
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  getListOfReservations(id): Observable<Array<Reservation>>{
+    return this.http.get<Array<Reservation>>(`${this.basePath}/accounts/${id}/reservations`)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  createReservation(item): Observable<Reservation> {
+    return this.http.post<Reservation>(`${this.basePath}/accounts/${item.AccountId}/office=${item.OfficeId}`,
+      JSON.stringify(item), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 

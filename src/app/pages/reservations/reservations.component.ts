@@ -5,7 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {HttpDataService} from '../../services/http-data.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import * as _ from 'lodash';
 @Component({
   selector: 'app-reservations',
@@ -30,7 +30,6 @@ export class ReservationsComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
     this.getAllReservations();
   }
-
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
   }
@@ -42,54 +41,26 @@ export class ReservationsComponent implements OnInit, AfterViewInit {
     }
   }
   getAllReservations(): void {
-    this.httpDataService.getList().subscribe((response: any) => {
+    this.httpDataService.getListOfReservations(1).subscribe((response: any) => {
       this.dataSource.data = response;
     });
-  }
-  editItem(element): void {
-    console.log(element);
-    this.reservationData = _.cloneDeep(element);
-    this.isEditMode = true;
   }
   cancelEdit(): void {
     this.isEditMode = false;
     this.reservationForm.resetForm();
   }
-  deleteItem(id): void {
-    this.httpDataService.deleteItem(id).subscribe(() => {
-      this.dataSource.data = this.dataSource.data.filter((o: Reservation) => {
-        return o.id !== id ? o : false;
-      });
-    });
-    console.log(this.dataSource.data);
-  }
   addReservation(): void {
-    const newReservation = {status: this.reservationData.status, initialDate: this.reservationData.initialDate,
-      endDate: this.reservationData.endDate};
-    this.httpDataService.createItem(newReservation).subscribe((response: any) => {
+    const newReservation = { status: this.reservationData.status, initialDate: this.reservationData.initialDate,
+      endDate: this.reservationData.endDate, OfficeId: this.reservationData.officeId, AccountId: this.reservationData.accountId };
+    this.httpDataService.createReservation(newReservation).subscribe((response: any) => {
       this.dataSource.data.push({...response});
       this.dataSource.data = this.dataSource.data.map(o => o);
     });
   }
-  updateReservation(): void {
-    this.httpDataService.updateItem(this.reservationData.id, this.reservationData)
-      .subscribe((response: any) => {
-        this.dataSource.data = this.dataSource.data.map((o: Reservation) => {
-          if (o.id === response.id) {
-            o = response;
-          }
-          return o;
-        });
-        this.cancelEdit();
-      });
-  }
+
   onSubmit(): void {
     if (this.reservationForm.form.valid) {
-      if (this.isEditMode) {
-        this.updateReservation();
-      } else {
-        this.addReservation();
-      }
+      this.addReservation();
     } else {
       console.log('Invalid Data');
     }

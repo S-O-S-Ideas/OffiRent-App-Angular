@@ -7,7 +7,6 @@ import { MatSort } from '@angular/material/sort';
 import { HttpDataService } from '../../services/http-data.service';
 import * as _ from 'lodash';
 import {Router} from '@angular/router';
-
 @Component({
   selector: 'app-offices',
   templateUrl: './offices.component.html',

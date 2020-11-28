@@ -15,24 +15,13 @@ export class ReservationComponent implements OnInit {
   isEditMode = false;
   reservationId: number;
   reservationData: Reservation = new Reservation();
-  defaultReservation = {id: 0, status: false, initialDate: '', endDate: ''};
+  defaultReservation = {status: false, initialDate: '', endDate: '', accountId: 0, officeId: 0};
 
   constructor(private httpDataService: HttpDataService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.reservationId =  Number(this.route.params.subscribe( params => {
-      if (params.id) {
-        const id = params.id;
-        console.log(id);
-        this.retrieveReservation(id);
-        this.isEditMode = true;
-        return id;
-      } else {
-        this.resetReservation();
-        this.isEditMode = false;
-        return 0;
-      }
-    }));
+    this.resetReservation();
+    this.isEditMode = false;
   }
   navigateToReservations(): void {
     this.router.navigate(['/my-reservations']);
@@ -49,29 +38,24 @@ export class ReservationComponent implements OnInit {
         console.log(this.reservationData);
       });
   }
+
   cancelEdit(): void {
     this.navigateToReservations();
   }
+
   addReservation(): void {
     const newReservation = { status: this.reservationData.status, initialDate: this.reservationData.initialDate,
-      endDate: this.reservationData.endDate };
-    this.httpDataService.createItem(newReservation)
+      endDate: this.reservationData.endDate, OfficeId: this.reservationData.officeId, AccountId: this.reservationData.accountId };
+    this.httpDataService.createReservation(newReservation)
       .subscribe(() => {
         this.navigateToReservations();
       });
   }
-  updateReservation(): void {
-    this.httpDataService.updateItem(this.reservationData.id, this.reservationData as Reservation);
-    this.navigateToReservations();
-  }
+
   onSubmit(): void {
     if (this.reservationForm.form.valid) {
       console.log(this.reservationData);
-      if (this.isEditMode) {
-        this.updateReservation();
-      } else {
-        this.addReservation();
-      }
+      this.addReservation();
     } else {
       console.log('Invalid Data');
     }
