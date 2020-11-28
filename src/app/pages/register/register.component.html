@@ -3,49 +3,46 @@
     <div>
       <img class="logo" src="assets/img/offirent.png" alt="">
     </div>
-    <mat-form-field class="text-field1" floatLabel="always">
-      <mat-label>E-mail</mat-label>
-      <label>
-        <input matInput placeholder="offiuser@gmail.com">
-      </label>
-    </mat-form-field>
-    <div class="grid-container">
-      <div class="grid-item">
-        <mat-form-field class="text-field_first_name" floatLabel="always">
-          <mat-label>Nombre</mat-label>
-          <label>
-            <input matInput>
-          </label>
-        </mat-form-field>
+    <form (submit)="onSubmit()" #registerForm="ngForm">
+      <mat-form-field class="text-field1" floatLabel="always">
+        <mat-label>E-mail</mat-label>
+        <input matInput placeholder="offiuser@gmail.com" name="email" type="email" required
+               [(ngModel)]="registerData.email">
+      </mat-form-field>
+      <div class="grid-container">
+        <div class="grid-item">
+          <mat-form-field class="text-field_first_name" floatLabel="always">
+            <mat-label>Nombre(s)</mat-label>
+            <input matInput name="firstName" type="text" required [(ngModel)]="registerData.firstName">
+          </mat-form-field>
+        </div>
+        <div class="grid-item">
+          <mat-form-field class="text-field_last_name" floatLabel="always">
+            <mat-label>Apellidos</mat-label>
+            <input matInput name="lastName" type="text" required [(ngModel)]="registerData.lastName">
+          </mat-form-field>
+        </div>
       </div>
-      <div class="grid-item">
-        <mat-form-field class="text-field_last_name" floatLabel="always">
-          <mat-label>Apellidos</mat-label>
-          <label>
-            <input matInput>
-          </label>
-        </mat-form-field>
+      <div class="grid-container">
+        <div class="grid-item">
+          <mat-form-field class="text-field_first_name" floatLabel="always">
+            <mat-label>DNI</mat-label>
+            <input matInput name="identification" type="number" required [(ngModel)]="registerData.identification">
+          </mat-form-field>
+        </div>
+        <div class="grid-item">
+          <mat-form-field class="text-field_last_name" floatLabel="always">
+            <mat-label>Numero de celular</mat-label>
+            <input matInput name="phone" type="number" required [(ngModel)]="registerData.phone">
+          </mat-form-field>
+        </div>
       </div>
-    </div>
-    <mat-form-field class="text-field2"  floatLabel="always">
-      <mat-label>Contraseña</mat-label>
-      <label>
-        <input matInput [type]="hide ? 'password' : 'text'">
-      </label>
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-    </mat-form-field>
-    <mat-form-field class="text-field2"  floatLabel="always">
-      <mat-label>Confirma tu Contraseña</mat-label>
-      <label>
-        <input matInput [type]="hide2 ? 'password' : 'text'">
-      </label>
-      <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
-        <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-    </mat-form-field>
-    <button class="btn_register" mat-raised-button>Registrate</button>
+      <mat-form-field class="text-field2" floatLabel="always">
+        <mat-label>Contraseña</mat-label>
+        <input matInput name="password" type="password" [(ngModel)]="registerData.password">
+      </mat-form-field>
+      <button class="btn_register">Registrate</button>
+    </form>
     <button routerLink="/login" class="btn_register" mat-raised-button>¿Ya tienes una cuenta?</button>
   </div>
   <div class="grid-item right_banner">

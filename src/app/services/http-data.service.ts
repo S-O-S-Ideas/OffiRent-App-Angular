@@ -117,4 +117,9 @@ export class HttpDataService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  createAccount(item): Observable<Account> {
+    return this.http.post<Account>(this.basePath, JSON.stringify(item), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
 }
