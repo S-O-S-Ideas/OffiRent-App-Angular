@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "offirentid-open": {
+      "hosting": {
+        "learning-center": [
+          "offirentid-open"
+        ]
+      }
+    }
+  }
+}
