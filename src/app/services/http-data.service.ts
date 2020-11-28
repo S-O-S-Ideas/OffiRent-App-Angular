@@ -4,6 +4,7 @@ import {Observable, throwError} from 'rxjs';
 import {Account} from '../models/account';
 import {catchError, retry} from 'rxjs/operators';
 import {Office} from '../models/office';
+import {Reservation} from '../models/reservation';
 
 @Injectable({
   providedIn: 'root'
@@ -83,5 +84,37 @@ export class HttpDataService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+
+  getListOfReservations(id): Observable<Array<Reservation>>{
+    return this.http.get<Array<Reservation>>(`${this.basePath}/accounts/${id}/reservations`)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  createReservation(item): Observable<Reservation> {
+    return this.http.post<Reservation>(`${this.basePath}accounts/${item.AccountId}/Office=${item.OfficeId}/reservations`,
+      JSON.stringify(item), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  createOfficina(item): Observable<Office> {
+    console.log(JSON.stringify(item));
+    return this.http.post<Office>(`${this.basePath}accounts/${item.accountId}/District=${item.districtId}/offices`,
+      JSON.stringify(item), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  updateOfficina(id, item): Observable<Office>{
+    console.log('aca se esta actulizando');
+    console.log(JSON.stringify(item));
+    return this.http.put<Office>(`${this.basePath}offices/${id}`, JSON.stringify(item), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  getOffice(id): Observable<Office> {
+    return this.http.get<Office>(`${this.basePath}offices/${id}`, this.httpOptions )
+      .pipe(retry(2), catchError(this.handleError));
+  }
+  deleteOffice(id): Observable<any> {
+    return this.http.delete<Account>(`${this.basePath}offices/${id}`, this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
 
 }

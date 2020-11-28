@@ -10,6 +10,8 @@ import {AccountsComponent} from './pages/accounts/accounts.component';
 import {OfficesSearchComponent} from './pages/offices-search/offices-search.component';
 import {LoginComponent} from './pages/login/login.component';
 import {RegisterComponent} from './pages/register/register.component';
+import {ReservationsComponent} from './pages/reservations/reservations.component';
+import {ReservationComponent} from './pages/reservation/reservation.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -19,9 +21,10 @@ const routes: Routes = [
   { path: 'my-offices/new', component: OfficeComponent },
   { path: 'my-offices/:id', component: OfficeComponent },
   { path: 'workplaces', component: OfficesSearchComponent},
-  { path: '', component: HomeComponent},
   { path: 'profile', component: AccountsComponent},
   { path: 'profile/edit', component: AccountComponent},
+  { path: 'my-reservations', component: ReservationsComponent},
+  { path: 'my-reservations/new', component: ReservationComponent},
   { path: 'about', component: AboutComponent },
   { path: '**', component: PageNotFoundComponent },
 

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../offices/offices.component.css">
 <mat-card>
   <mat-card-header>
     <mat-card-title>{{ isEditMode ? 'Editar Oficina' : 'Agregar Oficina' }}</mat-card-title>
@@ -5,6 +6,13 @@
   <mat-card-content>
     <form (submit)="onSubmit()" #officeForm="ngForm">
       <p>
+        <ng-template [ngIf]="!isEditMode" ]>
+          <mat-form-field>
+            <mat-label>Id</mat-label>
+            <input matInput placeholder="Id" name="id" type="number" required [(ngModel)]="officeData.id">
+          </mat-form-field>
+        <br>
+        </ng-template>
         <mat-form-field>
           <mat-label>Dirección</mat-label>
           <input matInput placeholder="Address" name="address" required [(ngModel)]="officeData.address">
@@ -36,6 +44,22 @@
           <mat-label>Comentario</mat-label>
           <input matInput placeholder="Comment" name="comment" required [(ngModel)]="officeData.comment">
         </mat-form-field>
+        <br>
+        <ng-template [ngIf]="!isEditMode" ]>
+          <mat-form-field >
+            <mat-label>accountId</mat-label>
+            <input matInput placeholder="AccountId" name="accountId" type="number" required [(ngModel)]="officeData.accountId">
+          </mat-form-field >
+          <br>
+        </ng-template>
+        <ng-template [ngIf]="!isEditMode" ]>
+        <mat-form-field>
+          <mat-label>districtId</mat-label>
+            <input matInput placeholder="DstrictId" name="districtId" type="number" required [(ngModel)]="officeData.districtId">
+          </mat-form-field>
+        </ng-template>
+
+
       </p>
       <p>
         <ng-container>

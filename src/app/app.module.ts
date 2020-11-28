@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { ReservationComponent } from './pages/reservation/reservation.component';
+import { ReservationsComponent } from './pages/reservations/reservations.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OfficesSearchComponent } from './pages/offices-search/offices-search.component';
@@ -39,6 +41,8 @@ import {MatPseudoCheckboxModule} from '@angular/material/core';
     HomeComponent,
     AboutComponent,
     PageNotFoundComponent,
+    ReservationComponent,
+    ReservationsComponent,
     OfficeComponent,
     OfficesComponent,
     AccountComponent,
